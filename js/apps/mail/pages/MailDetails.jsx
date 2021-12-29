@@ -27,6 +27,7 @@ export class MailDetails extends React.Component {
       <section className='email-details'>
         <h1>{email.subject}</h1>
         <p>{email.body}</p>
+        <p>{email.createdAt}</p>
       </section>
     );
   }

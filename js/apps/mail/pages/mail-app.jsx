@@ -2,15 +2,24 @@ import { mailService } from '../services/mail-service.js';
 import { MailList } from '../cmps/MailList.jsx';
 import { Loader } from '../cmps/Loader.jsx';
 import { eventBusService } from '../services/event-bus.service.js';
+import { SendMail } from '../cmps/SendMail.jsx';
 
 export class MailApp extends React.Component {
   state = {
     emails: null,
+    isShowMailModal: false,
   };
 
   componentDidMount() {
     this.loadMails();
   }
+
+  ShowMailModal = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      isShowMailModal: !this.state.isShowMailModal,
+    }));
+  };
 
   loadMails = () => {
     mailService.query().then((emails) => {
@@ -39,15 +48,17 @@ export class MailApp extends React.Component {
         count++;
       }
     });
-
+    const { isShowMailModal } = this.state;
     return (
       <section className='mail-app'>
         <h1>Unreal count : {count}</h1>
+        <button onClick={this.ShowMailModal}>Compose</button>
         <MailList
           emails={emails}
           onRemoveMail={this.onRemoveMail}
           onAddMail={this.onAddMail}
         />
+        {isShowMailModal && <SendMail />}
       </section>
     );
   }

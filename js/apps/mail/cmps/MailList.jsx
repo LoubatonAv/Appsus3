@@ -6,7 +6,6 @@ export function MailList({ emails, onRemoveMail, onAddMail }) {
   return (
     <div>
       <section className='email-list'>
-        <button>Compose</button>
         {emails.map((email) => (
           <EmailPreview
             key={email.id}
