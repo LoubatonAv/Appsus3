@@ -6,7 +6,7 @@ export const mailService = {
   getEmailById,
 };
 
-const STORAGE_KEY = 'booksDB';
+const STORAGE_KEY = 'emailsDB';
 
 const gEmails = [
   {
@@ -44,6 +44,14 @@ function getEmailById(emailId) {
   });
   return Promise.resolve(email);
 }
+
+// function getEmailById(emailId) {
+//   const emails = _loadBooksFromStorage();
+//   var email = emails.find((email) => {
+//     return emailId === email.id;
+//   });
+//   return Promise.resolve(email);
+// }
 
 function query() {
   const emails = _loadEmailsFromStorage();

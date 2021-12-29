@@ -1,0 +1,10 @@
+.email-preview {
+  display: flex;
+  gap: 20px;
+}
+
+.email-preview button {
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}

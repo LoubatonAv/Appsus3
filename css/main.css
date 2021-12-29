@@ -1,1 +1,4 @@
 @import './cmps/header.css';
+
+/* EMAIL CMPS */
+@import './apps/email/mail-preview.css';

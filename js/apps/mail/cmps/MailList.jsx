@@ -1,11 +1,14 @@
-// import { BookPreview } from './BookPreview.jsx';
+import { EmailPreview } from '../cmps/MailPreview.jsx';
 
 export function MailList({ emails }) {
-  console.log('emails:', emails);
+  if (!emails) return <h1>No mails to show!</h1>;
 
   return (
-    <section className='book-list'>
-      <h1>asd</h1>
+    <section className='email-list'>
+      asd
+      {emails.map((email) => (
+        <EmailPreview key={email.id} email={email} />
+      ))}
     </section>
   );
 }
