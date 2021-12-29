@@ -5,6 +5,7 @@ export const mailService = {
   query,
   getEmailById,
   markedAsRead,
+  removeMail,
 };
 
 const STORAGE_KEY = 'emailsDB';
@@ -38,15 +39,20 @@ const gEmails = [
 
 _createEmails();
 
+function removeMail(emailId) {
+  let emails = _loadEmailsFromStorage();
+  emails = emails.filter((email) => email.id !== emailId);
+  _saveEmailsToStorage(emails);
+  return Promise.resolve();
+}
+
 function markedAsRead(emailId) {
   const emails = _loadEmailsFromStorage();
 
   var email = emails.find((email) => {
     return emailId.id === email.id;
   });
-  // const tempEmails = emails.filter((email) => email.id !== emailId.id);
   email.isRead = true;
-  // tempEmails.push(email);
   _saveEmailsToStorage(emails);
   return Promise.resolve(email);
 }
@@ -58,14 +64,6 @@ function getEmailById(emailId) {
   });
   return Promise.resolve(email);
 }
-
-// function getEmailById(emailId) {
-//   const emails = _loadBooksFromStorage();
-//   var email = emails.find((email) => {
-//     return emailId === email.id;
-//   });
-//   return Promise.resolve(email);
-// }
 
 function query() {
   const emails = _loadEmailsFromStorage();
