@@ -9,6 +9,6 @@ export function NoteTodoList({ todo, todoKey }) {
   if (!todo) return <Loader />
   let done = (todo.doneAt) ? 'todo-done' : ''
   return <ul className="clean-list">
-    <li className={`flex space-between ${done}`}>{todo.txt} <button className="to-do-btn" onClick={() => onDeleteTodo(todoKey)}>x</button></li> 
+    <li className={`flex space-between ${done}`}>{todo.txt} <button className=" to-do-btn" onClick={() => onDeleteTodo(todoKey)}><i className="fa fa-trash"></i></button></li> 
   </ul>;
 }
