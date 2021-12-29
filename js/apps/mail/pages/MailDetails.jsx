@@ -12,7 +12,6 @@ export class MailDetails extends React.Component {
 
   loadEmail = () => {
     const { emailId } = this.props.match.params;
-    console.log('emailId:', emailId);
 
     mailService.getEmailById(emailId).then((email) =>
       this.setState({ email }, () => {
@@ -24,6 +23,7 @@ export class MailDetails extends React.Component {
 
   render() {
     const { email } = this.state;
+
     if (!email) return <Loader />;
 
     return (

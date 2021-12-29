@@ -1,8 +1,8 @@
 import { AppHeader } from './js/cmps/AppHeader.jsx';
 import { Home } from './js/pages/Home.jsx';
 import { About } from './js/pages/About.jsx';
-import { NoteIndex } from './js/apps/keep/pages/NoteIndex.jsx';
-import { MailIndex } from './js/apps/mail/pages/MailIndex.jsx';
+import { NoteApp } from './js/apps/keep/pages/note-app.jsx';
+import { MailApp } from './js/apps/mail/pages/mail-app.jsx';
 import { MailDetails } from './js/apps/mail/pages/MailDetails.jsx';
 
 // import { BookApp } from './pages/BookApp.jsx'
@@ -20,8 +20,8 @@ export function App() {
         <main>
           <Switch>
             <Route component={MailDetails} path='/email/:emailId' />
-            <Route component={NoteIndex} path='/Note' />
-            <Route component={MailIndex} path='/Email' />
+            <Route component={NoteApp} path='/Note' />
+            <Route component={MailApp} path='/email' />
             <Route component={About} path='/about' />
             <Route component={Home} path='/' />
           </Switch>
