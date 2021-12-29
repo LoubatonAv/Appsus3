@@ -2,6 +2,7 @@ import { NoteService } from '../services/Note.service.js'
 import { NoteList } from '../cmps/note-list.jsx'
 import { NoteDetails } from './note-details.jsx'
 import { Loader } from '../../../cmps/Loader.jsx'
+import { eventBusService } from '../../../services/event-bus.service.js'
 
 
 // const { Link } = ReactRouterDOM
@@ -25,6 +26,17 @@ export class NoteApp extends React.Component {
         })
     }
 
+    onRemoveNote = (id) => {
+        NoteService.removeNote(id).then(() => {
+            console.log('id:', id);
+            eventBusService.emit('user-msg', {
+                txt: 'mail is deleted !',
+                type: 'danger',
+            });
+        });
+        this.loadNotes();
+    };
+
 
 
     render() {
@@ -33,11 +45,10 @@ export class NoteApp extends React.Component {
         // if (!notes) return <Loader />
         return (
             <section className="note-app">
-                <h1>note-app</h1>
-                <NoteList notes={notes} />
-                {/* <div className=" add-note"> */}
-                {/* <Link className="btn primary-btn clean-link add-note" to="/note/add">Add note</Link> */}
-                {/* </div> */}
+                <NoteList notes={notes} onRemoveNote={this.onRemoveNote}/>
+                {/* <div className=" add-note">
+                    <Link className="btn primary-btn clean-link add-note" to="/note/add">Add note</Link>
+                </div> */}
             </section>
         )
     }

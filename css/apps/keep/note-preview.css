@@ -1,8 +1,7 @@
 .note-preview.card{
   /* gap: 0.5rem; */
-  min-width: 200px;
-  max-width: 350px;
-  height: 320px;
+  min-width: 300px;
+  min-height: 350px;
   padding: 0.7rem;
   font-size: 0.8rem;
 }

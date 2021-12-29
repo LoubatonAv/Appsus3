@@ -3,12 +3,12 @@ import { storageService } from '../../../services/storage.service.js'
 
 export const NoteService = {
   query,
+  removeNote,
   // getBookById,
   // checkReadLength,
   // getGoogleResults,
   // addBook,
   // addCar,
-  // removeCar,
   // updateCar
 }
 
@@ -62,6 +62,13 @@ function query(filterBy = null) {
   if (!filterBy) return Promise.resolve(notes)
   // const filteredCars = _getFilteredCars(notes, filterBy)
   // return Promise.resolve(filteredCars)
+}
+
+function removeNote(noteId) {
+    let notes = _loadNotesFromStorage()
+    notes = notes.filter(note => note.id !== noteId)
+    _saveNotesToStorage(notes);
+    return Promise.resolve()
 }
 
 function getNoteById(noteId) {
@@ -139,12 +146,7 @@ function _loadNotesFromStorage() {
 //     })
 // }
 
-// function removeCar(carId) {
-//     let cars = _loadCarsFromStorage()
-//     cars = cars.filter(car => car.id !== carId)
-//     _saveCarsToStorage(cars);
-//     return Promise.resolve()
-// }
+
 
 // function addCar(vendor, speed) {
 //     const cars = _loadCarsFromStorage()
