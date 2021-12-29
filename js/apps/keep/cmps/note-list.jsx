@@ -6,7 +6,6 @@ export function NoteList({ notes, onSelectNote }) {
   if (!notes) return <Loader />
   return (
     <section className="note-list">
-      <h1>note list</h1>
       {notes.map(note => <NotePreview key={note.id} note={note} />)} 
     </section>
   )

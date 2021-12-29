@@ -33,7 +33,6 @@ export class NoteApp extends React.Component {
         // if (!notes) return <Loader />
         return (
             <section className="note-app">
-                <h1>note-app</h1>
                 <NoteList notes={notes} />
                 {/* <div className=" add-note"> */}
                 {/* <Link className="btn primary-btn clean-link add-note" to="/note/add">Add note</Link> */}
