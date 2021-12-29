@@ -1,0 +1,15 @@
+.note-preview.card{
+  /* gap: 0.5rem; */
+  min-width: 200px;
+  max-width: 350px;
+  height: 320px;
+  padding: 0.7rem;
+  font-size: 0.8rem;
+}
+
+.note-preview.card:hover{
+  backdrop-filter: blur(11px) saturate(77%);
+  background-color: rgba(26, 25, 25, 0.72);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}

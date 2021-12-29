@@ -1,0 +1,71 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  background-color: #a6cfc0;
+  /* background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  margin: 0;
+}
+
+
+img {
+  width: 150px;
+  border-radius: 12px;
+}
+
+.card {
+  max-width: 75vw;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  background-color: rgba(196, 189, 189, 0.12);
+  border-radius: 12px;
+  border: 3px solid rgba(99, 96, 96, 0.125);
+
+  color: rgb(255, 153, 0);
+  transition: 0.3s;
+  text-transform: capitalize;
+  overflow: hidden;
+}
+
+.btn.primary-btn{
+  font-size: 1rem;
+  padding: 7px;
+  /* border-radius: 5px; */
+  text-align: center;
+  backdrop-filter: blur(20px);
+  background-color: rgba(155, 155, 155, 0.42);
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.125);
+
+  color: rgb(255, 153, 0);
+  transition: 1s;
+  text-transform: capitalize;
+}
+
+.btn.primary-btn:hover{
+  backdrop-filter: blur(11px) saturate(77%);
+  background-color: rgba(26, 25, 25, 0.72);
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.825);
+
+}
+
+.loader {
+  position: fixed;
+  height: 100vh;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

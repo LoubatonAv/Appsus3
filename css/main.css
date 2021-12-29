@@ -1,4 +1,12 @@
+@import './basics/base.css';
+@import './basics/helpers.css';
+
+
 @import './cmps/header.css';
 
 /* EMAIL CMPS */
 @import './apps/email/mail-preview.css';
+
+/* NOTE CMPS */
+@import 'apps/keep/note-preview.css';
+@import 'apps/keep/notes-list.css';

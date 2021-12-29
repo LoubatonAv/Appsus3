@@ -25,15 +25,16 @@ export class NoteApp extends React.Component {
         })
     }
 
-    
+
 
     render() {
         const { notes, selectedNote } = this.state;
+        // console.log(notes);
         // if (!notes) return <Loader />
         return (
             <section className="note-app">
-              <h1>HIIIIIIII</h1>
-                <NoteList notes={notes}/>
+                <h1>note-app</h1>
+                <NoteList notes={notes} />
                 {/* <div className=" add-note"> */}
                 {/* <Link className="btn primary-btn clean-link add-note" to="/note/add">Add note</Link> */}
                 {/* </div> */}
