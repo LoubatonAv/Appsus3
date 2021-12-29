@@ -6,7 +6,7 @@ class _AppHeader extends React.Component {
         return (
             <header className="app-header" >
                 <div className="header-logo">
-                    <h1 onClick={() => this.props.history.push('/')}>Books R Us</h1>
+                    <h1 onClick={() => this.props.history.push('/')}>Appsus</h1>
                 </div>
                 <nav className="main-nav">
                     <NavLink exact to="/">
@@ -21,7 +21,7 @@ class _AppHeader extends React.Component {
                     </NavLink>
                     <NavLink to="/book">
                         <div className="nav-btn-div">
-                            Our Books
+                            Book Shop
                         </div>
                     </NavLink>
                     <NavLink to="/book">
