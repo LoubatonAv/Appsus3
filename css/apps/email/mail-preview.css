@@ -1,6 +1,7 @@
 .email-preview {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .email-preview button {

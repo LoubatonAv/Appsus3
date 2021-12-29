@@ -4,6 +4,7 @@ import { utilService } from './util.service.js';
 export const mailService = {
   query,
   getEmailById,
+  markedAsRead,
 };
 
 const STORAGE_KEY = 'emailsDB';
@@ -36,6 +37,19 @@ const gEmails = [
 ];
 
 _createEmails();
+
+function markedAsRead(emailId) {
+  const emails = _loadEmailsFromStorage();
+
+  var email = emails.find((email) => {
+    return emailId.id === email.id;
+  });
+  // const tempEmails = emails.filter((email) => email.id !== emailId.id);
+  email.isRead = true;
+  // tempEmails.push(email);
+  _saveEmailsToStorage(emails);
+  return Promise.resolve(email);
+}
 
 function getEmailById(emailId) {
   const emails = _loadEmailsFromStorage();

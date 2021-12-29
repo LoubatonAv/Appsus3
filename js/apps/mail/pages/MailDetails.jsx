@@ -12,7 +12,6 @@ export class MailDetails extends React.Component {
 
   loadEmail = () => {
     const { emailId } = this.props.match.params;
-
     mailService.getEmailById(emailId).then((email) =>
       this.setState({ email }, () => {
         if (!email) this.props.history.push('/');
@@ -23,9 +22,7 @@ export class MailDetails extends React.Component {
 
   render() {
     const { email } = this.state;
-
     if (!email) return <Loader />;
-
     return (
       <section className='email-details'>
         <h1>{email.subject}</h1>
