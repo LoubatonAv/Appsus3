@@ -1,7 +1,7 @@
 import { AppHeader } from './js/cmps/AppHeader.jsx';
 import { Home } from './js/pages/Home.jsx';
 import { About } from './js/pages/About.jsx';
-import { NoteIndex } from './js/apps/keep/pages/note-index.jsx';
+import { NoteApp } from './js/apps/keep/pages/note-app.jsx';
 import { MailIndex } from './js/apps/mail/pages/MailIndex.jsx';
 
 // import { BookApp } from './pages/BookApp.jsx'
@@ -18,7 +18,7 @@ export function App() {
         <AppHeader />
         <main>
           <Switch>
-            <Route component={NoteIndex} path='/Note' />
+            <Route component={NoteApp} path='/Note' />
             <Route component={MailIndex} path='/Email' />
             <Route component={About} path='/about' />
             <Route component={Home} path='/' />
