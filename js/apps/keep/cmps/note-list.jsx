@@ -1,11 +1,13 @@
 import { NotePreview } from './note-preview.jsx'
+import { Loader } from '../../../cmps/Loader.jsx'
 
-export function NoteList({ notes, onSelectNote}) {
-    // if (!notes.length) return <h1>There are no notes to show</h1>
-    return (
-        <h1>note list</h1>
-        // <section className="note-list">
-        //     {notes.map(note => <NotePreview key={note.id} note={note} />)}   
-        // </section>
-    )
+export function NoteList({ notes, onSelectNote }) {
+  console.log(notes)
+  if (!notes) return <Loader />
+  return (
+    <section className="note-list">
+      <h1>note list</h1>
+      {notes.map(note => <NotePreview key={note.id} note={note} />)} 
+    </section>
+  )
 }
