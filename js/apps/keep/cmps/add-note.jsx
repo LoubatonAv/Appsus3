@@ -1,40 +1,95 @@
+import { NoteTextInput } from './note-txt-input.jsx'
+
 export class AddNote extends React.Component {
   state = {
-    email: {
-      to: '',
-      subject: '',
-      body: '',
+    'note-img': {
+      id: '',
+      type: 'note-img',
+      info: {
+        url: '',
+        title: '',
+      },
+      isPinned: false,
     },
+
+    'note-txt': {
+      id: '',
+      type: 'note-txt',
+      info: {
+        txt: '',
+        title: '',
+      },
+      isPinned: false,
+    },
+
+    'note-todos': {
+      id: "",
+      type: "note-todos",
+      info: {
+        label: "",
+        todos: [
+          {
+            txt: "",
+            done: false,
+            id: ''
+          }],
+      }
+    },
+
+    type: ``,
   };
 
-  switchInputType = () => {}
-  // handleChange = ({ target }) => {
-  //   const field = target.name;
-  //   const value = target.value;
-  //   this.setState((prevState) => ({
-  //     review: { ...prevState.review, [field]: value },
-  //   }));
-  // };
+  switchInputType = (type) => {
+    this.setState({ type: type })
+  };
+
+
+  handleChange = ({ target }) => {
+    console.log(target)
+    // const field = target.name;
+    // const value = target.value;
+    // this.setState((prevState) => ({
+    //   review: { ...prevState.review, [field]: value },
+    // }));
+  };
+
+  onSaveEmail = (ev) => {
+    ev.preventDefault();
+    console.log(ev)
+    // const { email } = this.state;
+    // noteService.saveMail(email);
+    // this.props.ShowMailModal();
+  };
 
   render() {
-    console.log(this.state);
+  
+    // console.log(NoteTextInput);
     return (
       <section className='note-add-screen flex space-between column'>
-        <h1>Add A New Note</h1>
-        <div className="">INPUT</div>
-        <button className="btn primary-btn" onClick={this.props.toggleNoteModal}>
-            <i className="fa fa-trash"></i></button>
-        <div className="ui-buttons container">
-          
 
-          <button className="btn primary-btn" onClick={this.switchInputType}>
+        {/* title and exit(trash icon) */}
+        <div className='flex space-between note-add-trash-container'> <button className="btn primary-btn trash" onClick={this.props.toggleNoteModal}>
+          <i className="fa fa-trash "></i></button> <h1>Add A New Note</h1>
+        </div>
+
+        {/* input according to choice  - txt*/}
+        {this.state.type === 'note-txt' && < NoteTextInput toggleNoteModal={this.props.toggleNoteModal} loadNotes={this.props.loadNotes}/> }
+
+        {this.state.type === 'note-todos' && <div className="note-add-trash-container">note-todos</div>}
+        {this.state.type === 'note-img' && <div className="note-add-trash-container">note-img</div>}
+        {this.state.type === 'note-vid' && <div className="note-add-trash-container">note-vid</div>}
+
+        {/* input choice buttons */}
+        <div className="ui-buttons container">
+
+          <button className="btn primary-btn" name="note-txt" onClick={() => this.switchInputType("note-txt")}>
             <i className="fa fa-align-center"></i></button>
 
-          <button className="btn primary-btn" onClick={this.props.toggleNoteModal}> <i className="fa fa-paint-brush"></i></button>
+          <button className="btn primary-btn" name="note-todos" onClick={() => this.switchInputType("note-todos")}> <i className="fa fa-paint-brush"></i></button>
 
-          <button className="btn primary-btn" onClick={this.props.toggleNoteModal}><i className="fa fa-map-pin"></i></button>
+          <button className="btn primary-btn" name="note-img" onClick={() => this.switchInputType("note-img")}><i className="fa fa-map-pin"></i></button>
 
-          <button className="btn primary-btn"><i className="fa fa-share-alt" onClick={this.props.toggleNoteModal}></i></button>
+          <button className="btn primary-btn"><i className="fa fa-share-alt" name="note-vid" onClick={() => this.switchInputType("note-vid")}></i></button>
         </div>
       </section>
     );

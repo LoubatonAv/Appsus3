@@ -6,6 +6,7 @@ export const NoteService = {
   removeNote,
   removeTodo,
   ToggleTodoDone,
+  saveTxtNote,
   // getBookById,
   // checkReadLength,
   // getGoogleResults,
@@ -20,29 +21,29 @@ const KEY = 'noteDB';
 let notesDefault = [
   {
     id: "n101",
-    type: "note-txt",
+
     isPinned: true,
     info: {
-      txt: "Fullstack Me Baby!"
+      txt: "Fullstack Me Baby!",
+      type: "note-txt",
+      title: 'LOL'
     }
   },
 
   {
     id: "n102",
-    type: "note-img",
     info: {
+      type: "note-img",
       url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100",
       title: "Bobi and Me"
     },
-    style: {
-      backgroundColor: "#00d"
-    }
+    isPinned: false,
   },
 
   {
     id: "n103",
-    type: "note-todos",
     info: {
+      type: "note-todos",
       label: "Get my stuff together",
       todos: [
         { txt: "Driving liscence", done: false, id: 101 },
@@ -65,6 +66,27 @@ function query(filterBy = null) {
   // const filteredCars = _getFilteredCars(notes, filterBy)
   // return Promise.resolve(filteredCars)
 }
+
+function saveTxtNote(info) {
+  console.log('execute saveTxtNote: ', info)
+  let notes = _loadNotesFromStorage()
+  let note = _createNote(info)
+  notes = [note, ...notes]
+  _saveNotesToStorage(notes)
+  return Promise.resolve(note)
+}
+
+function _createNote(info) {
+  // let txt = info.txt;
+  // let title = info.title;
+  // let type = info.type;      
+  return {
+    id: utilService.makeId(),
+    info,
+    isPinned: false,
+  }
+}
+
 
 function removeNote(noteId) {
   let notes = _loadNotesFromStorage()

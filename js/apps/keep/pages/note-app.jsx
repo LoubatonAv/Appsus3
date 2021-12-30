@@ -23,8 +23,10 @@ export class NoteApp extends React.Component {
 
     loadNotes = () => {
         // const { filterBy } = this.state
+        
         NoteService.query(this.state.filterBy).then(notes => {
             this.setState({ notes })
+            console.log(notes)
         })
     }
 
@@ -86,7 +88,7 @@ export class NoteApp extends React.Component {
         return (
             <section className="note-app ">
                 
-                {this.state.isShowNoteModal && <AddNote toggleNoteModal={this.toggleNoteModal}/>}
+                {this.state.isShowNoteModal && <AddNote toggleNoteModal={this.toggleNoteModal} loadNotes={this.loadNotes}/>}
 
                 <NoteList notes={notes} onRemoveNote={this.onRemoveNote} onRemoveTodo={this.onRemoveTodo} onToggleTodoDone={this.onToggleTodoDone} toggleNoteModal={this.toggleNoteModal} />
                 
