@@ -5,7 +5,9 @@ export const mailService = {
   query,
   getEmailById,
   markedAsRead,
+  saveMail,
   removeMail,
+  createMail,
 };
 
 const STORAGE_KEY = 'emailsDB';
@@ -15,29 +17,43 @@ const gEmails = [
     id: utilService.makeId(),
     subject: 'Miss you!',
     body: 'Would love to catch up sometimes',
-    isRead: false,
+    isRead: 'false',
     sentAt: 1551133930594,
     to: 'momo@momo.com',
+    box: 'inbox',
+    isMarked: false,
   },
   {
     id: utilService.makeId(),
     subject: 'Hate you!',
-    body: 'Would love to catch up sometimes',
-    isRead: false,
+    body: 'Filtering this is a nightmare',
+    isRead: 'true',
     sentAt: 1551133930594,
     to: 'momo@momo.com',
+    box: 'trash',
+    isMarked: true,
   },
   {
     id: utilService.makeId(),
     subject: 'Buck you!',
-    body: 'Would love to catch up sometimes',
-    isRead: false,
+    body: 'But overall this is fun',
+    isRead: 'true',
     sentAt: 1551133930594,
     to: 'momo@momo.com',
+    box: 'sent',
+    isMarked: true,
   },
 ];
 
 _createEmails();
+
+function saveMail(emailToSave) {
+  let emails = _loadEmailsFromStorage();
+  var email = createMail(emailToSave);
+  emails = [email, ...emails];
+  _saveEmailsToStorage(emails);
+  return Promise.resolve();
+}
 
 function removeMail(emailId) {
   let emails = _loadEmailsFromStorage();
@@ -46,13 +62,26 @@ function removeMail(emailId) {
   return Promise.resolve();
 }
 
+function createMail(emailToSave) {
+  return {
+    id: utilService.makeId(),
+    to: emailToSave.to,
+    subject: emailToSave.subject,
+    body: emailToSave.body,
+    isRead: 'false',
+    sentAt: new Date().getTime(),
+    box: 'inbox',
+    isMarked: false,
+  };
+}
+
 function markedAsRead(emailId) {
   const emails = _loadEmailsFromStorage();
-
   var email = emails.find((email) => {
     return emailId.id === email.id;
   });
-  email.isRead = true;
+  email.isMarked = true;
+  email.isRead = 'true';
   _saveEmailsToStorage(emails);
   return Promise.resolve(email);
 }
@@ -65,10 +94,19 @@ function getEmailById(emailId) {
   return Promise.resolve(email);
 }
 
-function query() {
+function query(filterBy = null) {
   const emails = _loadEmailsFromStorage();
+  if (!filterBy) return Promise.resolve(emails);
+  const filteredMails = _getFilteredMails(emails, filterBy);
+  return Promise.resolve(filteredMails);
+}
 
-  return Promise.resolve(emails);
+function _getFilteredMails(emails, filterBy) {
+  const { txt, isRead } = filterBy;
+  if (isRead === '') return emails;
+  return emails.filter((email) => {
+    return email.isRead === isRead;
+  });
 }
 
 function _createEmails() {

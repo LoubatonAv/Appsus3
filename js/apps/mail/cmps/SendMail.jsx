@@ -1,3 +1,6 @@
+import { mailService } from '../services/mail-service.js';
+import { eventBusService } from '../services/event-bus.service.js';
+
 export class SendMail extends React.Component {
   state = {
     email: {
@@ -6,26 +9,54 @@ export class SendMail extends React.Component {
       body: '',
     },
   };
+  inputRef = React.createRef();
 
   handleChange = ({ target }) => {
     const field = target.name;
     const value = target.value;
     this.setState((prevState) => ({
-      review: { ...prevState.review, [field]: value },
+      email: { ...prevState.email, [field]: value },
     }));
   };
 
+  onSaveEmail = (ev) => {
+    ev.preventDefault();
+    const { email } = this.state;
+    mailService.saveMail(email);
+    this.props.ShowMailModal();
+  };
+
   render() {
-    console.log(this.state);
+    const { to, subject, body } = this.state.email;
     return (
-      <section className='review-add'>
-        <div className='review-modal'>
-          <form>
-            <input></input>
-            <button>Click</button>
-          </form>
-        </div>
-      </section>
+      <div>
+        <section className='mail-add'>
+          <div className='mail-modal'>
+            <button onClick={() => this.props.ShowMailModal()}>×</button>
+            <form onSubmit={this.onSaveEmail}>
+              <label htmlFor='to-user'>To:</label>
+              <input
+                ref={this.inputRef}
+                name='to'
+                type='text'
+                id='to-user'
+                value={to}
+                onChange={this.handleChange}
+              />
+              <label htmlFor='subject'>Subject:</label>
+              <input
+                name='subject'
+                type='text'
+                id='subject'
+                value={subject}
+                onChange={this.handleChange}
+              />
+              <textarea name='body' value={body} onChange={this.handleChange} />
+              <button>Send mail</button>
+            </form>
+          </div>
+        </section>
+      </div>
     );
   }
 }
