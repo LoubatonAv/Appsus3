@@ -4,6 +4,8 @@ import { storageService } from '../../../services/storage.service.js'
 export const NoteService = {
   query,
   removeNote,
+  removeTodo,
+  ToggleTodoDone,
   // getBookById,
   // checkReadLength,
   // getGoogleResults,
@@ -43,8 +45,8 @@ let notesDefault = [
     info: {
       label: "Get my stuff together",
       todos: [
-        { txt: "Driving liscence", doneAt: null, id:101 },
-        { txt: "Coding power", doneAt: 187111111, id:102 }
+        { txt: "Driving liscence", done: false, id: 101 },
+        { txt: "Coding power", done: true, id: 102 }
       ]
     }
   }
@@ -65,24 +67,45 @@ function query(filterBy = null) {
 }
 
 function removeNote(noteId) {
-    let notes = _loadNotesFromStorage()
-    notes = notes.filter(note => note.id !== noteId)
-    _saveNotesToStorage(notes);
-    return Promise.resolve()
+  let notes = _loadNotesFromStorage()
+  notes = notes.filter(note => note.id !== noteId)
+  _saveNotesToStorage(notes);
+  return Promise.resolve()
 }
 
-// function removeTodo(noteId, todoId) {
-//     let notes = _loadNotesFromStorage()
-//     let note = note.find( (note) => note.id === noteId)
-//     let todos = note.filter( (note) => note.info.todo.Id === noteId)
-//           car.speed = newSpeed;
-//           _saveCarsToStorage(cars);
-//           return Promise.resolve()
-//       }
-//     notes = notes.filter(note => note.id !== noteId)
-//     _saveNotesToStorage(notes);
-//     return Promise.resolve()
-// }
+function removeTodo(noteId, todoId) {
+  // console.log('noteId : ', noteId);
+  // console.log('todoId:', todoId);
+  let notes = _loadNotesFromStorage()
+  let note = notes.find((note) => note.id === noteId)
+  // console.log('note:', note);
+  // console.log('note.info.todos:', note.info.todos);
+  const noteIdx = notes.findIndex((note) => note.id === noteId);
+  let newTodos = note.info.todos.filter((todo) => todo.id !== todoId)
+  // console.log('newTodos:', newTodos);
+  note.info.todos = newTodos;
+  notes[noteIdx] = note;
+  _saveNotesToStorage(notes);
+  return Promise.resolve()
+}
+
+function ToggleTodoDone(noteId, todoId) {
+  // console.log('noteId : ', noteId);
+  // console.log('todoId:', todoId);
+  let notes = _loadNotesFromStorage()
+  let note = notes.find((note) => note.id === noteId)
+  // console.log('note:', note);
+  // console.log('note.info.todos:', note.info.todos);
+  const noteIdx = notes.findIndex((note) => note.id === noteId);
+  const todoIdx = note.info.todos.findIndex((todo) => todo.id === todoId);
+  let toggeldTodo = note.info.todos.find((todo) => todo.id === todoId)
+  toggeldTodo.done = !toggeldTodo.done;
+  // console.log('toggeldTodo.done:', toggeldTodo.done);
+  note.info.todos[todoIdx] = toggeldTodo;
+  notes[noteIdx] = note;
+  _saveNotesToStorage(notes);
+  return Promise.resolve()
+}
 
 
 

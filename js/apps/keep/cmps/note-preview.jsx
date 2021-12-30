@@ -6,7 +6,8 @@ const { Link, Route } = ReactRouterDOM
 
 
 export function NotePreview({ ...props}) {
-// console.log('note: ', note)
+  // console.log('props: ', props)
+  // console.log('note: ', note)
 // console.log('note.id: ', note.id)
 // console.log('remove note: ', onRemoveNote)
   let note = props.note;
@@ -30,7 +31,7 @@ export function NotePreview({ ...props}) {
       return <article className={`note-preview card`} >
       <h2>{note.info.label} </h2>
       <section className="note-list">
-      {note.info.todos.map((todo) => <NoteTodoList key={todo.id} todo={todo} note={note}  onRemoveTodo={props.onRemoveTodo} noteKey={note.id}/>)}
+      {note.info.todos.map((todo) => <NoteTodoList key={todo.id} todo={todo} note={note}  onRemoveTodo={props.onRemoveTodo} onToggleTodoDone={props.onToggleTodoDone} todoKey={todo.id}/>)}
       {note.isPinned && <h1>PINNED </h1> } 
     </section>
     <div><NoteUIButtons note={note}  onRemoveNote={props.onRemoveNote} key={note.id}/></div>
