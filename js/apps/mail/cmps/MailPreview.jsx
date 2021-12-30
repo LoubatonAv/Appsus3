@@ -20,8 +20,8 @@ export function EmailPreview({ email, onRemoveMail }) {
           onClick={() => mailService.markedAsRead(email)}>
           Read
         </Link>
-        {email.isRead ? <h1>Read</h1> : <h1>Not read</h1>}
-        <button onClick={() => onRemoveMail(email.id)}>remove</button>
+        {email.isMarked ? <h1>Read</h1> : <h1>Not Read</h1>}
+        <button onClick={() => onRemoveMail(email.id)}>Remove</button>
       </article>
     </div>
   );

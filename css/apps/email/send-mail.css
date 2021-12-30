@@ -1,5 +1,6 @@
-.review-add {
+.mail-add {
   position: fixed;
+
   z-index: 10;
   left: 0;
   top: 0;
@@ -10,7 +11,8 @@
   padding-top: 50px;
 }
 
-.review-add .review-modal {
+.mail-add .mail-modal {
+  display: flex;
   background-color: #fefefe;
   margin: 5% auto 15% auto;
   border: 1px solid #888;
