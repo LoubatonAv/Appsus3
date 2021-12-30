@@ -28,14 +28,25 @@ export class NoteApp extends React.Component {
 
     onRemoveNote = (id) => {
         NoteService.removeNote(id).then(() => {
-            console.log('id:', id);
+            // console.log('id:', id);
             eventBusService.emit('user-msg', {
-                txt: 'mail is deleted !',
+                txt: 'note is deleted !',
                 type: 'danger',
             });
         });
         this.loadNotes();
     };
+
+    onRemoveTodo = (noteId, todoId) => {
+        console.log('noteId, todoId:', noteId, todoId);
+        // NoteService.removeTodo(noteId, todoId).then(() => {
+        //     eventBusService.emit('user-msg', {
+        //         txt: 'todo is deleted !',
+        //         type: 'danger',
+        //     });
+        // });
+        // this.loadNotes();
+    }
 
 
 
@@ -45,7 +56,7 @@ export class NoteApp extends React.Component {
         // if (!notes) return <Loader />
         return (
             <section className="note-app">
-                <NoteList notes={notes} onRemoveNote={this.onRemoveNote}/>
+                <NoteList notes={notes} onRemoveNote={this.onRemoveNote} onRemoveTodo={this.onRemoveTodo}/>
                 {/* <div className=" add-note">
                     <Link className="btn primary-btn clean-link add-note" to="/note/add">Add note</Link>
                 </div> */}

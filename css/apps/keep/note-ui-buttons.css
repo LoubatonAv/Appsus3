@@ -39,6 +39,10 @@ li.flex.space-between{
   height: 35px;
 
 }
+li.todo-list:hover{
+  color: rgb(255, 153, 0);
+  cursor: pointer;
+}
 
 .todo-done{
   text-decoration: line-through;
