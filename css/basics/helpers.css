@@ -10,6 +10,9 @@
   justify-content: space-between;
 }
 
+.align-items-center {
+  align-items: center;
+}
 .stick{
   position: fixed;
 }
