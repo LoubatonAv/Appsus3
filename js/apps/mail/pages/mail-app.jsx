@@ -3,6 +3,7 @@ import { MailList } from '../cmps/MailList.jsx';
 import { Loader } from '../cmps/Loader.jsx';
 import { eventBusService } from '../services/event-bus.service.js';
 import { SendMail } from '../cmps/SendMail.jsx';
+import { MailFilter } from '../cmps/MailFilter.jsx';
 
 export class MailApp extends React.Component {
   state = {
@@ -29,7 +30,6 @@ export class MailApp extends React.Component {
 
   onRemoveMail = (id) => {
     mailService.removeMail(id).then(() => {
-      console.log('id:', id);
       eventBusService.emit('user-msg', {
         txt: 'mail is deleted !',
         type: 'danger',
@@ -50,16 +50,19 @@ export class MailApp extends React.Component {
     });
     const { isShowMailModal } = this.state;
     return (
-      <section className='mail-app'>
-        <h1>Unreal count : {count}</h1>
-        <button onClick={this.ShowMailModal}>Compose</button>
-        <MailList
-          emails={emails}
-          onRemoveMail={this.onRemoveMail}
-          onAddMail={this.onAddMail}
-        />
-        {isShowMailModal && <SendMail />}
-      </section>
+      <div>
+        <section className='mail-app'>
+          <MailFilter />
+          <h1>Unreal count : {count}</h1>
+          <button onClick={this.ShowMailModal}>Compose</button>
+          <MailList
+            emails={emails}
+            onRemoveMail={this.onRemoveMail}
+            onAddMail={this.onAddMail}
+          />
+          {isShowMailModal && <SendMail />}
+        </section>
+      </div>
     );
   }
 }

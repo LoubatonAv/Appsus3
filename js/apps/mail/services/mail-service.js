@@ -18,6 +18,7 @@ const gEmails = [
     isRead: false,
     sentAt: 1551133930594,
     to: 'momo@momo.com',
+    box: 'inbox',
   },
   {
     id: utilService.makeId(),
@@ -26,6 +27,7 @@ const gEmails = [
     isRead: false,
     sentAt: 1551133930594,
     to: 'momo@momo.com',
+    box: 'trash',
   },
   {
     id: utilService.makeId(),
@@ -34,6 +36,7 @@ const gEmails = [
     isRead: false,
     sentAt: 1551133930594,
     to: 'momo@momo.com',
+    box: 'sent',
   },
 ];
 
