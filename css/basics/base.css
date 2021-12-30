@@ -10,7 +10,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: rgb(255, 255, 255);
+  color: rgb(20, 19, 19);
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -33,23 +33,25 @@ img {
   border-radius: 12px;
   border: 3px solid rgba(99, 96, 96, 0.125);
 
-  color: rgb(255, 153, 0);
+  color: rgb(22, 22, 21);
   transition: 0.3s;
   text-transform: capitalize;
   overflow: hidden;
 }
 
 .btn.primary-btn{
+  width: 53px;
+  height: 53px;
   font-size: 1rem;
   padding: 7px;
   /* border-radius: 5px; */
   text-align: center;
   backdrop-filter: blur(20px);
-  background-color: rgba(155, 155, 155, 0.42);
-  border-radius: 12px;
-  border: 3px solid rgba(255, 255, 255, 0.125);
+  background-color: rgba(255, 255, 255, 0.05);
+  /* border-radius: 12px; */
+  border: 1px solid rgba(255, 255, 255, 0.325);
 
-  color: rgb(255, 153, 0);
+  color: rgb(0, 0, 0);
   transition: 1s;
   text-transform: capitalize;
 }
@@ -57,8 +59,9 @@ img {
 .btn.primary-btn:hover{
   backdrop-filter: blur(11px) saturate(77%);
   background-color: rgba(26, 25, 25, 0.72);
-  border-radius: 12px;
-  border: 3px solid rgba(255, 255, 255, 0.825);
+  color: rgb(255, 153, 0);
+  /* border-radius: 12px; */
+  /* border: 3px solid rgba(255, 255, 255, 0.825); */
 
 }
 

@@ -1,14 +1,18 @@
 .note-preview.card{
   /* gap: 0.5rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   min-width: 300px;
-  min-height: 350px;
+  height: 350px;
   padding: 0.7rem;
   font-size: 0.8rem;
 }
 
 .note-preview.card:hover{
   backdrop-filter: blur(11px) saturate(77%);
-  background-color: rgba(26, 25, 25, 0.72);
-  border-radius: 12px;
+  background-color: rgba(13, 46, 30, 0.52);
+  /* border-radius: 12px; */
   border: 1px solid rgba(255, 255, 255, 0.125);
 }

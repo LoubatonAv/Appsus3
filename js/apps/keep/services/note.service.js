@@ -43,8 +43,8 @@ let notesDefault = [
     info: {
       label: "Get my stuff together",
       todos: [
-        { txt: "Driving liscence", doneAt: null },
-        { txt: "Coding power", doneAt: 187111111 }
+        { txt: "Driving liscence", doneAt: null, id:101 },
+        { txt: "Coding power", doneAt: 187111111, id:102 }
       ]
     }
   }
@@ -70,6 +70,21 @@ function removeNote(noteId) {
     _saveNotesToStorage(notes);
     return Promise.resolve()
 }
+
+// function removeTodo(noteId, todoId) {
+//     let notes = _loadNotesFromStorage()
+//     let note = note.find( (note) => note.id === noteId)
+//     let todos = note.filter( (note) => note.info.todo.Id === noteId)
+//           car.speed = newSpeed;
+//           _saveCarsToStorage(cars);
+//           return Promise.resolve()
+//       }
+//     notes = notes.filter(note => note.id !== noteId)
+//     _saveNotesToStorage(notes);
+//     return Promise.resolve()
+// }
+
+
 
 function getNoteById(noteId) {
   const notes = _loadNotesFromStorage()
