@@ -30,7 +30,7 @@ const gEmails = [
     isRead: 'true',
     sentAt: 1551133930594,
     to: 'momo@momo.com',
-    box: 'trash',
+    box: 'inbox',
     isMarked: true,
   },
   {
@@ -40,7 +40,7 @@ const gEmails = [
     isRead: 'true',
     sentAt: 1551133930594,
     to: 'momo@momo.com',
-    box: 'sent',
+    box: 'inbox',
     isMarked: true,
   },
 ];
@@ -70,7 +70,7 @@ function createMail(emailToSave) {
     body: emailToSave.body,
     isRead: 'false',
     sentAt: new Date().getTime(),
-    box: 'inbox',
+    box: 'sent',
     isMarked: false,
   };
 }
@@ -102,10 +102,12 @@ function query(filterBy = null) {
 }
 
 function _getFilteredMails(emails, filterBy) {
-  const { txt, isRead } = filterBy;
+  const { isRead, box } = filterBy;
+  console.log('box:', box);
+
   if (isRead === '') return emails;
   return emails.filter((email) => {
-    return email.isRead === isRead;
+    return email.isRead === isRead && email.box === box;
   });
 }
 

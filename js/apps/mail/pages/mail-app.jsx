@@ -10,6 +10,9 @@ export class MailApp extends React.Component {
   state = {
     emails: [],
     isShowMailModal: false,
+    criteria: {
+      status: 'inbox',
+    },
   };
 
   componentDidMount() {
@@ -41,6 +44,13 @@ export class MailApp extends React.Component {
     this.loadMails();
   };
 
+  onSetBox = (newStatus) => {
+    this.setState((prevState) => ({
+      criteria: { ...prevState.criteria, status: newStatus },
+    }));
+    this.loadMails();
+  };
+
   onSetFilter = (filterBy) => {
     this.setState({ filterBy }, this.loadMails);
   };
@@ -48,7 +58,6 @@ export class MailApp extends React.Component {
   render() {
     const { emails } = this.state;
     if (!emails) return <Loader />;
-
     let count = 0;
     emails.map((email) => {
       if (!email.isMarked) {
@@ -56,9 +65,10 @@ export class MailApp extends React.Component {
       }
     });
     const { isShowMailModal } = this.state;
+
     return (
       <div>
-        <MailFilter onSetFilter={this.onSetFilter} />
+        <MailFilter onSetFilter={this.onSetFilter} onSetBox={this.onSetBox} />
         <section className='mail-app'>
           <h1>Unread count : {count}</h1>
           <button onClick={this.ShowMailModal}>Compose</button>
