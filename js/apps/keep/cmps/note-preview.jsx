@@ -11,7 +11,7 @@ export function NotePreview({ ...props}) {
 // console.log('note.id: ', note.id)
 // console.log('remove note: ', onRemoveNote)
   let note = props.note;
-  switch (note.type) {
+  switch (note.info.type) {
     case 'note-txt':
       return <article className={`note-preview card`} ><div>
       <h2>{note.info.txt}</h2>

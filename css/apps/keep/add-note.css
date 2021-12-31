@@ -4,7 +4,7 @@
   left: 25%;
   top: 25%;
   width: 50vw;
-  height: 350px;
+  height: 40vh;
   /* overflow */
   backdrop-filter: blur(20px);
   background-color: rgba(196, 189, 189, 0.12);
@@ -22,4 +22,11 @@
   width: 60%;
   height: 60%;
   text-align: center;
+}
+.note-add-trash-container{
+  width: 50vw;
+  padding: 0px 20px 0px 20px;
+}
+.btn.primary-btn.trash{
+
 }
