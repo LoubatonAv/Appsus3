@@ -65,10 +65,10 @@ export class MailApp extends React.Component {
       }
     });
     const { isShowMailModal } = this.state;
+
     return (
       <div>
-        <MailFilter onSetFilter={this.onSetFilter} />
-        <MailBoxes onSetBox={this.onSetBox} />
+        <MailFilter onSetFilter={this.onSetFilter} onSetBox={this.onSetBox} />
         <section className='mail-app'>
           <h1>Unread count : {count}</h1>
           <button onClick={this.ShowMailModal}>Compose</button>
