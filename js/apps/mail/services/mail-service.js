@@ -15,7 +15,7 @@ const STORAGE_KEY = 'emailsDB';
 const gEmails = [
   {
     id: utilService.makeId(),
-    subject: 'Miss you!',
+    subject: 'INBOX',
     body: 'Would love to catch up sometimes',
     isRead: 'false',
     sentAt: 1551133930594,
@@ -25,22 +25,22 @@ const gEmails = [
   },
   {
     id: utilService.makeId(),
-    subject: 'Hate you!',
+    subject: 'SENT!',
     body: 'Filtering this is a nightmare',
     isRead: 'true',
     sentAt: 1551133930594,
     to: 'momo@momo.com',
-    box: 'inbox',
+    box: 'sent',
     isMarked: true,
   },
   {
     id: utilService.makeId(),
-    subject: 'Buck you!',
+    subject: 'DELETED',
     body: 'But overall this is fun',
     isRead: 'true',
     sentAt: 1551133930594,
     to: 'momo@momo.com',
-    box: 'inbox',
+    box: 'deleted',
     isMarked: true,
   },
 ];
@@ -104,9 +104,11 @@ function query(filterBy = null) {
 function _getFilteredMails(emails, filterBy) {
   const { isRead, box } = filterBy;
   console.log('box:', box);
-
-  if (isRead === '') return emails;
+  console.log('isRead:', isRead);
   return emails.filter((email) => {
+    if (isRead === '') {
+      return email.box === box;
+    }
     return email.isRead === isRead && email.box === box;
   });
 }

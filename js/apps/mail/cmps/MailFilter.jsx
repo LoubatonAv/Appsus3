@@ -4,7 +4,7 @@ export class MailFilter extends React.Component {
   state = {
     filterBy: {
       txt: '',
-      isRead: 'false',
+      isRead: '',
       box: 'inbox',
     },
   };
@@ -12,6 +12,7 @@ export class MailFilter extends React.Component {
   handleChange = ({ target }) => {
     const field = target.name;
     const value = target.value;
+
     this.setState(
       (prevState) => ({ filterBy: { ...prevState.filterBy, [field]: value } }),
       () => {
@@ -24,11 +25,17 @@ export class MailFilter extends React.Component {
     return (
       <div>
         <section>
-          <select name='box' onChange={this.handleChange}>
-            <option value=''>All folders</option>
-            <option value='inbox'>Inbox</option>
-            <option value='sent'>Sent</option>
-          </select>
+          <div>
+            <button name='box' onClick={this.handleChange} value='inbox'>
+              Inbox
+            </button>
+            <button name='box' onClick={this.handleChange} value='sent'>
+              Sent
+            </button>
+            <button name='box' onClick={this.handleChange} value='deleted'>
+              Deleted
+            </button>
+          </div>
         </section>
 
         <section>
