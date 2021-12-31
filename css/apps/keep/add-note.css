@@ -3,8 +3,8 @@
   z-index: 10;
   left: 25%;
   top: 25%;
-  width: 50vw;
-  height: 40vh;
+  min-width: 50vw;
+  min-height: 40vh;
   /* overflow */
   backdrop-filter: blur(20px);
   background-color: rgba(196, 189, 189, 0.12);
@@ -24,8 +24,8 @@
   text-align: center;
 }
 .note-add-trash-container{
-  width: 50vw;
-  padding: 0px 20px 0px 20px;
+  width: 100%;
+  /* padding: 0px 20px 0px 20px; */
 }
 .btn.primary-btn.trash{
 

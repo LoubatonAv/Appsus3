@@ -3,8 +3,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    backdrop-filter: blur(11px) saturate(77%);
-    background-color: rgba(25, 25, 26, 0.42);
+    backdrop-filter: blur(15px) saturate(30%);
+    background-color: rgba(2, 2, 46, 0.42);
     color: #fff;
     height: 10vh;
     padding: 0 1rem;

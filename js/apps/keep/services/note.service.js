@@ -6,7 +6,7 @@ export const NoteService = {
   removeNote,
   removeTodo,
   ToggleTodoDone,
-  saveTxtNote,
+  saveNote: saveNote,
   // getBookById,
   // checkReadLength,
   // getGoogleResults,
@@ -44,7 +44,7 @@ let notesDefault = [
     id: "n103",
     info: {
       type: "note-todos",
-      label: "Get my stuff together",
+      title: "Get my stuff together",
       todos: [
         { txt: "Driving liscence", done: false, id: 101 },
         { txt: "Coding power", done: true, id: 102 }
@@ -67,22 +67,64 @@ function query(filterBy = null) {
   // return Promise.resolve(filteredCars)
 }
 
-function saveTxtNote(info) {
-  console.log('execute saveTxtNote: ', info)
+function saveNote(info) {
+  console.log('execute saveNote: ', info)
   let notes = _loadNotesFromStorage()
-  let note = _createNote(info)
+  let note = null
+  switch (info.type) {
+    case 'note-txt':
+      note = _createTextNote(info)
+      break;
+    case 'note-img':
+      note = _createImageNote(info)
+      break;
+    case 'note-todos':
+      note = _createTodosNote(info)
+      break;
+    case 'note-vid':
+      // note = _createTxtNote(info)
+      break;
+  }
   notes = [note, ...notes]
   _saveNotesToStorage(notes)
   return Promise.resolve(note)
 }
 
-function _createNote(info) {
-  // let txt = info.txt;
-  // let title = info.title;
-  // let type = info.type;      
+function _createTodosNote(info) {
+  let currTodos = info.todos.map( todoTxt => {
+  let todo = {
+      done: false,
+      id: utilService.makeId(),
+      txt: todoTxt
+    }
+    return todo
+  })
+  console.log('currTodos: ', currTodos )
+  return {
+    id: utilService.makeId(),
+    info: {
+      title: info.title,
+      type: info.type,
+      todos: [...currTodos]
+    },
+    isPinned: false,
+  }
+}
+function _createTextNote(info) {
   return {
     id: utilService.makeId(),
     info,
+    isPinned: false,
+  }
+}
+function _createImageNote(info) {
+  return {
+    id: utilService.makeId(),
+    info: {
+      title: info.title,
+      url: info.url,
+      type: info.type,
+    },
     isPinned: false,
   }
 }

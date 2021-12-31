@@ -25,7 +25,7 @@ export class NoteTextInput extends React.Component {
 
     const { info } = this.state;
     console.log('saving note:', info)
-    NoteService.saveTxtNote(info).then(() => this.props.loadNotes());
+    NoteService.saveNote(info).then(() => this.props.loadNotes());
       this.props.toggleNoteModal();
     };
 

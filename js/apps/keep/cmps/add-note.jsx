@@ -1,41 +1,9 @@
 import { NoteTextInput } from './note-txt-input.jsx'
+import { NoteImageInput } from './note-img-input.jsx'
+import { NoteTodosCreator } from './note-todos-creator.jsx'
 
 export class AddNote extends React.Component {
   state = {
-    'note-img': {
-      id: '',
-      type: 'note-img',
-      info: {
-        url: '',
-        title: '',
-      },
-      isPinned: false,
-    },
-
-    'note-txt': {
-      id: '',
-      type: 'note-txt',
-      info: {
-        txt: '',
-        title: '',
-      },
-      isPinned: false,
-    },
-
-    'note-todos': {
-      id: "",
-      type: "note-todos",
-      info: {
-        label: "",
-        todos: [
-          {
-            txt: "",
-            done: false,
-            id: ''
-          }],
-      }
-    },
-
     type: ``,
   };
 
@@ -44,22 +12,22 @@ export class AddNote extends React.Component {
   };
 
 
-  handleChange = ({ target }) => {
-    console.log(target)
-    // const field = target.name;
-    // const value = target.value;
-    // this.setState((prevState) => ({
-    //   review: { ...prevState.review, [field]: value },
-    // }));
-  };
+  // handleChange = ({ target }) => {
+  //   console.log(target)
+  //   // const field = target.name;
+  //   // const value = target.value;
+  //   // this.setState((prevState) => ({
+  //   //   review: { ...prevState.review, [field]: value },
+  //   // }));
+  // };
 
-  onSaveEmail = (ev) => {
-    ev.preventDefault();
-    console.log(ev)
-    // const { email } = this.state;
-    // noteService.saveMail(email);
-    // this.props.ShowMailModal();
-  };
+  // onSaveEmail = (ev) => {
+  //   ev.preventDefault();
+  //   console.log(ev)
+  //   // const { email } = this.state;
+  //   // noteService.saveMail(email);
+  //   // this.props.ShowMailModal();
+  // };
 
   render() {
   
@@ -75,10 +43,12 @@ export class AddNote extends React.Component {
         {/* input according to choice  - txt*/}
         {this.state.type === 'note-txt' && < NoteTextInput toggleNoteModal={this.props.toggleNoteModal} loadNotes={this.props.loadNotes}/> }
 
-        {this.state.type === 'note-todos' && <div className="note-add-trash-container">note-todos</div>}
-        {this.state.type === 'note-img' && <div className="note-add-trash-container">note-img</div>}
-        {this.state.type === 'note-vid' && <div className="note-add-trash-container">note-vid</div>}
+        {this.state.type === 'note-todos' && < NoteTodosCreator toggleNoteModal={this.props.toggleNoteModal} loadNotes={this.props.loadNotes} /> }
 
+        {this.state.type === 'note-img' && < NoteImageInput toggleNoteModal={this.props.toggleNoteModal} loadNotes={this.props.loadNotes}/> }
+
+        {this.state.type === 'note-vid' && <div className="note-add-trash-container">note-vid</div>}
+        
         {/* input choice buttons */}
         <div className="ui-buttons container">
 
@@ -111,3 +81,38 @@ export class AddNote extends React.Component {
 //   <button>Add review</button>
 // </form>
 // </div>
+
+
+// 'note-img': {
+//   id: '',
+//   type: 'note-img',
+//   info: {
+//     url: '',
+//     title: '',
+//   },
+//   isPinned: false,
+// },
+
+// 'note-txt': {
+//   id: '',
+//   type: 'note-txt',
+//   info: {
+//     txt: '',
+//     title: '',
+//   },
+//   isPinned: false,
+// },
+
+// 'note-todos': {
+//   id: "",
+//   type: "note-todos",
+//   info: {
+//     label: "",
+//     todos: [
+//       {
+//         txt: "",
+//         done: false,
+//         id: ''
+//       }],
+//   }
+// },

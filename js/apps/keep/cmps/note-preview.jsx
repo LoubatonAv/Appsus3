@@ -14,7 +14,8 @@ export function NotePreview({ ...props}) {
   switch (note.info.type) {
     case 'note-txt':
       return <article className={`note-preview card`} ><div>
-      <h2>{note.info.txt}</h2>
+      <h2>{note.info.title}</h2>
+      <h4>{note.info.txt}</h4>
       {note.isPinned && <h1>PINNED </h1> }</div>
       <div><NoteUIButtons note={note}  onRemoveNote={props.onRemoveNote} key={note.id}/></div>
     </article>
@@ -29,7 +30,7 @@ export function NotePreview({ ...props}) {
 
     case 'note-todos':
       return <article className={`note-preview card`} >
-      <h2>{note.info.label} </h2>
+      <h2>{note.info.title} </h2>
       <section className="note-list">
       {note.info.todos.map((todo) => <NoteTodoList key={todo.id} todo={todo} note={note}  onRemoveTodo={props.onRemoveTodo} onToggleTodoDone={props.onToggleTodoDone} todoKey={todo.id}/>)}
       {note.isPinned && <h1>PINNED </h1> } 
