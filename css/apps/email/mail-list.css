@@ -16,3 +16,14 @@
 .mail-app-container {
   gap: 20px;
 }
+
+@media (max-width: 768px) {
+  .mail-app {
+    display: flex;
+    flex-direction: column;
+  }
+  .mail-boxes {
+    display: flex;
+    flex-direction: row;
+  }
+}
