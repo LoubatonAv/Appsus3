@@ -5,6 +5,7 @@ import { eventBusService } from '../services/event-bus.service.js';
 import { SendMail } from '../cmps/SendMail.jsx';
 import { MailFilter } from '../cmps/MailFilter.jsx';
 import { MailBoxes } from '../cmps/MailBoxes.jsx';
+import { MailSort } from '../cmps/MailSort.jsx';
 
 export class MailApp extends React.Component {
   state = {
@@ -13,6 +14,7 @@ export class MailApp extends React.Component {
     criteria: {
       status: '',
       txt: '',
+      sort: '',
     },
   };
 
@@ -53,8 +55,6 @@ export class MailApp extends React.Component {
   };
 
   onSetFilter = (filterBy) => {
-    console.log('filterBy from app:', filterBy);
-
     this.setState({ filterBy }, this.loadMails);
   };
 
@@ -72,10 +72,10 @@ export class MailApp extends React.Component {
     return (
       <div>
         <h1>Unread count : {count}</h1>
-
         <button className='compose-btn' onClick={this.ShowMailModal}>
           Send mail
         </button>
+
         <section className='mail-app'>
           <MailFilter onSetFilter={this.onSetFilter} onSetBox={this.onSetBox} />
           <MailList

@@ -4,6 +4,7 @@ export class MailFilter extends React.Component {
       txt: '',
       isRead: '',
       box: '',
+      sortBy: '',
     },
   };
 
@@ -25,6 +26,13 @@ export class MailFilter extends React.Component {
     } = this.state;
     return (
       <div className='filters'>
+        <section className='read-filter'>
+          <select name='sortBy' onChange={this.handleChange}>
+            <option value=''>All</option>
+            <option value='alphabet'>Alphabet</option>
+            <option value='date'>Date</option>
+          </select>
+        </section>
         <div>
           <input
             placeholder='Search Here...'

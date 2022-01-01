@@ -8,6 +8,7 @@ class _AppHeader extends React.Component {
           <h1 onClick={() => this.props.history.push('/')}>Appsus</h1>
         </div>
         <nav className='main-nav'>
+          <img src='assests/imgs/four-squares-10585 (1).png'></img>
           <NavLink exact to='/'>
             <div className='nav-btn-div home'>Home</div>
           </NavLink>
