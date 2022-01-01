@@ -32,9 +32,9 @@ export class SendMail extends React.Component {
       <div>
         <section className='mail-add'>
           <div className='mail-modal'>
-            <button onClick={() => this.props.ShowMailModal()}>×</button>
-            <form onSubmit={this.onSaveEmail}>
-              <label htmlFor='to-user'>To:</label>
+            <form className='send-mail-form' onSubmit={this.onSaveEmail}>
+              <button onClick={() => this.props.ShowMailModal()}>×</button>
+
               <input
                 ref={this.inputRef}
                 name='to'
@@ -43,7 +43,7 @@ export class SendMail extends React.Component {
                 value={to}
                 onChange={this.handleChange}
               />
-              <label htmlFor='subject'>Subject:</label>
+
               <input
                 name='subject'
                 type='text'

@@ -11,7 +11,8 @@ export class MailApp extends React.Component {
     emails: [],
     isShowMailModal: false,
     criteria: {
-      status: 'inbox',
+      status: '',
+      txt: '',
     },
   };
 
@@ -34,8 +35,8 @@ export class MailApp extends React.Component {
     });
   };
 
-  onRemoveMail = (id) => {
-    mailService.removeMail(id).then(() => {
+  onRemoveMail = (email) => {
+    mailService.removeMail(email).then(() => {
       eventBusService.emit('user-msg', {
         txt: 'mail is deleted !',
         type: 'danger',
@@ -52,6 +53,8 @@ export class MailApp extends React.Component {
   };
 
   onSetFilter = (filterBy) => {
+    console.log('filterBy from app:', filterBy);
+
     this.setState({ filterBy }, this.loadMails);
   };
 
@@ -68,10 +71,13 @@ export class MailApp extends React.Component {
 
     return (
       <div>
-        <MailFilter onSetFilter={this.onSetFilter} onSetBox={this.onSetBox} />
+        <h1>Unread count : {count}</h1>
+
+        <button className='compose-btn' onClick={this.ShowMailModal}>
+          <i className='fa fa-plus'></i>
+        </button>
         <section className='mail-app'>
-          <h1>Unread count : {count}</h1>
-          <button onClick={this.ShowMailModal}>Compose</button>
+          <MailFilter onSetFilter={this.onSetFilter} onSetBox={this.onSetBox} />
           <MailList
             emails={emails}
             onRemoveMail={this.onRemoveMail}

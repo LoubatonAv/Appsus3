@@ -12,10 +12,30 @@
 
 .mail-add .mail-modal {
   display: flex;
+
   background-color: #fefefe;
   margin: 5% auto 15% auto;
   border: 1px solid #888;
   width: 60%;
   height: 60%;
-  text-align: center;
+}
+
+.send-mail-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.send-mail-form input {
+  height: 10%;
+}
+
+.compose-btn {
+  padding: 1%;
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
 }

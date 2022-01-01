@@ -6,9 +6,15 @@
 /* EMAIL CMPS */
 @import './apps/email/mail-preview.css';
 @import './apps/email/send-mail.css';
+@import './apps/email/mail-list.css';
+@import './apps/email/mail-filter.css';
 
 /* NOTE CMPS */
 @import 'apps/keep/note-preview.css';
 @import 'apps/keep/notes-list.css';
 @import 'apps/keep/note-ui-buttons.css';
 @import 'apps/keep/add-note.css';
+
+/* books */
+
+@import './apps/books/books.css';

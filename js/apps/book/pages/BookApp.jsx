@@ -1,6 +1,7 @@
 import { bookService } from '../services/book.service.js';
 import { BookList } from '../cmps/BookList.jsx';
 import { BookFilter } from '../cmps/BookFilter.jsx';
+import { BookAdd } from '../pages/BookAdd.jsx';
 
 export class BookApp extends React.Component {
   state = {
@@ -27,6 +28,7 @@ export class BookApp extends React.Component {
     const { books } = this.state;
     return (
       <div>
+        <BookAdd />
         <BookFilter onSetFilter={this.onSetFilter} />
         <BookList books={books} />
       </div>

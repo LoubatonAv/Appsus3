@@ -1,5 +1,6 @@
 const { Link } = ReactRouterDOM;
 import { mailService } from '../services/mail-service.js';
+import { MailBoxes } from './MailBoxes.jsx';
 
 export function EmailPreview({ email, onRemoveMail }) {
   const getDate = (date) => {
@@ -10,19 +11,22 @@ export function EmailPreview({ email, onRemoveMail }) {
   };
 
   return (
-    <div>
-      <article className='email-preview'>
-        <p>{email.subject}</p>
-        <p>{email.body}</p>
-        <p>{getDate(email.sentAt)}</p>
-        <Link
-          to={`/email/${email.id}`}
-          onClick={() => mailService.markedAsRead(email)}>
-          Read
-        </Link>
-        {email.isMarked ? <h1>Read</h1> : <h1>Not Read</h1>}
-        <button onClick={() => onRemoveMail(email.id)}>Remove</button>
-      </article>
-    </div>
+    <article className='email-preview-item'>
+      <h1>Subject : {email.subject} </h1>
+      <p>From : {email.from}</p>
+
+      <p>Recevied at : {getDate(email.sentAt)}</p>
+      <p>{email.body}</p>
+      <p></p>
+      <Link
+        to={`/email/${email.id}`}
+        onClick={() => mailService.markedAsRead(email)}>
+        Read
+      </Link>
+      {email.isMarked ? <h1>Read</h1> : <h1>Not Read</h1>}
+      <button onClick={() => onRemoveMail(email)}>Remove</button>
+    </article>
   );
 }
+
+// <button onClick={() => onRemoveMail(email.id)}>Remove</button>

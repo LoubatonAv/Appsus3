@@ -10,6 +10,10 @@ export const mailService = {
   createMail,
 };
 
+const user = {
+  username: 'dodo@gmail.com',
+  password: 12345,
+};
 const STORAGE_KEY = 'emailsDB';
 
 const gEmails = [
@@ -22,6 +26,40 @@ const gEmails = [
     to: 'momo@momo.com',
     box: 'inbox',
     isMarked: false,
+    from: 'momo@momo.com',
+  },
+  {
+    id: utilService.makeId(),
+    subject: 'INBOX',
+    body: 'Would love to catch up sometimes',
+    isRead: 'false',
+    sentAt: 1551133930594,
+    to: 'momo@momo.com',
+    box: 'inbox',
+    isMarked: false,
+    from: 'momo@momo.com',
+  },
+  {
+    id: utilService.makeId(),
+    subject: 'INBOX',
+    body: 'Would love to catch up sometimes',
+    isRead: 'false',
+    sentAt: 1551133930594,
+    to: 'momo@momo.com',
+    box: 'inbox',
+    isMarked: false,
+    from: 'momo@momo.com',
+  },
+  {
+    id: utilService.makeId(),
+    subject: 'INBOX',
+    body: 'Would love to catch up sometimes',
+    isRead: 'false',
+    sentAt: 1551133930594,
+    to: 'momo@momo.com',
+    box: 'inbox',
+    isMarked: false,
+    from: 'momo@momo.com',
   },
   {
     id: utilService.makeId(),
@@ -32,6 +70,7 @@ const gEmails = [
     to: 'momo@momo.com',
     box: 'sent',
     isMarked: true,
+    from: 'momo@momo.com',
   },
   {
     id: utilService.makeId(),
@@ -42,6 +81,7 @@ const gEmails = [
     to: 'momo@momo.com',
     box: 'deleted',
     isMarked: true,
+    from: 'momo@momo.com',
   },
 ];
 
@@ -55,11 +95,22 @@ function saveMail(emailToSave) {
   return Promise.resolve();
 }
 
-function removeMail(emailId) {
+function removeMail(mail) {
   let emails = _loadEmailsFromStorage();
-  emails = emails.filter((email) => email.id !== emailId);
+  emails = emails.filter((email) => email.id !== mail.id);
   _saveEmailsToStorage(emails);
   return Promise.resolve();
+}
+
+function markedAsRead(emailId) {
+  const emails = _loadEmailsFromStorage();
+  var email = emails.find((email) => {
+    return emailId.id === email.id;
+  });
+  email.isMarked = true;
+  email.isRead = 'true';
+  _saveEmailsToStorage(emails);
+  return Promise.resolve(email);
 }
 
 function createMail(emailToSave) {
@@ -72,18 +123,8 @@ function createMail(emailToSave) {
     sentAt: new Date().getTime(),
     box: 'sent',
     isMarked: false,
+    from: user.username,
   };
-}
-
-function markedAsRead(emailId) {
-  const emails = _loadEmailsFromStorage();
-  var email = emails.find((email) => {
-    return emailId.id === email.id;
-  });
-  email.isMarked = true;
-  email.isRead = 'true';
-  _saveEmailsToStorage(emails);
-  return Promise.resolve(email);
 }
 
 function getEmailById(emailId) {
@@ -102,16 +143,24 @@ function query(filterBy = null) {
 }
 
 function _getFilteredMails(emails, filterBy) {
-  const { isRead, box } = filterBy;
-  console.log('box:', box);
-  console.log('isRead:', isRead);
+  const { isRead, box, txt } = filterBy;
+
   return emails.filter((email) => {
+    if (txt) return email.body.toLowerCase().includes(txt.toLowerCase());
+    if (!txt && !isRead && !box) return emails;
     if (isRead === '') {
       return email.box === box;
     }
+
     return email.isRead === isRead && email.box === box;
   });
 }
+
+// if (isRead === '') {
+//   return email.box === box;
+// }
+// return email.isRead === isRead && email.box === box;
+// });
 
 function _createEmails() {
   let emails = _loadEmailsFromStorage();

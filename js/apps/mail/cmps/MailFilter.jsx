@@ -5,7 +5,7 @@ export class MailFilter extends React.Component {
     filterBy: {
       txt: '',
       isRead: '',
-      box: 'inbox',
+      box: '',
     },
   };
 
@@ -22,29 +22,39 @@ export class MailFilter extends React.Component {
   };
 
   render() {
+    const {
+      filterBy: { txt },
+    } = this.state;
     return (
-      <div>
-        <section>
-          <div>
-            <button name='box' onClick={this.handleChange} value='inbox'>
-              Inbox
-            </button>
-            <button name='box' onClick={this.handleChange} value='sent'>
-              Sent
-            </button>
-            <button name='box' onClick={this.handleChange} value='deleted'>
-              Deleted
-            </button>
-          </div>
-        </section>
-
-        <section>
+      <div className='filters'>
+        <div>
+          <input
+            placeholder='Search Here...'
+            type='text'
+            id='by-txt'
+            name='txt'
+            value={txt}
+            onChange={this.handleChange}
+          />
+        </div>
+        <section className='read-filter'>
           <select name='isRead' onChange={this.handleChange}>
             <option value=''>All</option>
             <option value='true'>Read</option>
             <option value='false'>UnRead</option>
           </select>
         </section>
+        <div className='mail-boxes'>
+          <button name='box' onClick={this.handleChange} value='inbox'>
+            Inbox <i className='fa fa-inbox'></i>
+          </button>
+          <button name='box' onClick={this.handleChange} value='sent'>
+            Sent <i className='fa fa-paper-plane'></i>
+          </button>
+          <button name='box' onClick={this.handleChange} value='deleted'>
+            Deleted <i className='fa fa-trash'></i>
+          </button>
+        </div>
       </div>
     );
   }

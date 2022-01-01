@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lightblue;
+  margin: 0;
+}
+
+/* h1 {
+    font-size: 30px;
+    color: rgb(87, 87, 87);
+    text-decoration: underline;
+  } */
+
+.book-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.book-preview {
+  border: 1px solid gray;
+  background-color: rgb(236, 236, 236);
+  padding: 20px;
+}
+
+.book-preview img {
+  width: max-content;
+}
+
+.header {
+  text-align: center;
+}
+
+.book-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-details {
+  padding: 50px;
+  width: 50%;
+  text-align: center;
+  background-color: white;
+  margin: auto;
+}
+
+.review {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-review {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  resize: none;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.book-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-preview a {
+  text-decoration: none;
+  color: gray;
+}
+
+.about {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 10%;
+}
+
+.books-ul {
+  display: flex;
+}
+
+.user-msg {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  padding: 1rem 1.5rem;
+}
+
+.user-msg button {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+
+.user-msg.success {
+  background-color: rgb(119, 238, 179);
+}
+
+.user-msg.danger {
+  background-color: rgb(238, 119, 119);
+}

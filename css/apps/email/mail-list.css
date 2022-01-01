@@ -1,0 +1,18 @@
+.email-preview-item {
+  border-top: 1px solid;
+  background-color: rgba(255, 255, 255, 0.7);
+
+  padding: 20px;
+}
+
+.mail-list {
+  width: 100%;
+}
+
+.mail-app {
+  display: flex;
+}
+
+.mail-app-container {
+  gap: 20px;
+}
