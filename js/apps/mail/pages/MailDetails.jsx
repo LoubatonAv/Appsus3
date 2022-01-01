@@ -1,9 +1,17 @@
 import { mailService } from '../services/mail-service.js';
 import { Loader } from '../cmps/Loader.jsx';
+const { Link } = ReactRouterDOM;
 
 export class MailDetails extends React.Component {
   state = {
     email: null,
+  };
+
+  getDate = (date) => {
+    const newDate = new Date(date).toLocaleString('he-us', {
+      timeZone: 'GMT',
+    });
+    return newDate;
   };
 
   componentDidMount() {
@@ -22,12 +30,14 @@ export class MailDetails extends React.Component {
 
   render() {
     const { email } = this.state;
+
     if (!email) return <Loader />;
     return (
       <section className='email-details'>
-        <h1>{email.subject}</h1>
+        Sent at : {this.getDate(email.sentAt)}
+        <h1>{email.subject} </h1>
         <p>{email.body}</p>
-        <p>{email.createdAt}</p>
+        <Link to={`/email/`}>Go back</Link>
       </section>
     );
   }

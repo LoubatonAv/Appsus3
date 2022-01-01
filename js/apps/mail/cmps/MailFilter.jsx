@@ -1,5 +1,3 @@
-import { MailBoxes } from './MailBoxes.jsx';
-
 export class MailFilter extends React.Component {
   state = {
     filterBy: {

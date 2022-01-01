@@ -74,7 +74,7 @@ export class MailApp extends React.Component {
         <h1>Unread count : {count}</h1>
 
         <button className='compose-btn' onClick={this.ShowMailModal}>
-          <i className='fa fa-plus'></i>
+          Send mail
         </button>
         <section className='mail-app'>
           <MailFilter onSetFilter={this.onSetFilter} onSetBox={this.onSetBox} />

@@ -8,6 +8,7 @@
 @import './apps/email/send-mail.css';
 @import './apps/email/mail-list.css';
 @import './apps/email/mail-filter.css';
+@import './apps/email/email-details.css';
 
 /* NOTE CMPS */
 @import 'apps/keep/note-preview.css';

@@ -1,6 +1,7 @@
 import { bookService } from '../services/book.service.js';
 import { Loader } from '../cmps/Loader.jsx';
 import { ReviewAdd } from '../cmps/ReviewAdd.jsx';
+const { Link } = ReactRouterDOM;
 
 export class BookDetails extends React.Component {
   state = {
@@ -66,6 +67,7 @@ export class BookDetails extends React.Component {
         </h2>
 
         {this.isBookNew() < 1 ? <h2>New book</h2> : <h2>Old Book</h2>}
+        <Link to={`/book/`}>Go back</Link>
         <ReviewAdd book={book} loadBook={this.loadBook} />
         <section>
           <h5>Reviews</h5>

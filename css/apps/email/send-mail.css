@@ -24,12 +24,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  margin-left: 25%;
+  width: 50%;
+}
+.close-mail-form {
+  width: 10%;
+  margin-left: auto;
 }
 
 .send-mail-form input {
-  height: 10%;
+  height: 5%;
+}
+.send-mail-form textarea {
+  height: 15%;
 }
 
 .compose-btn {

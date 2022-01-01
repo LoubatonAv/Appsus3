@@ -1,4 +1,5 @@
 import { storageService } from './storage.service.js';
+
 import { utilService } from './util.service.js';
 
 export const bookService = {
@@ -467,7 +468,7 @@ function addBook(googleBook) {
   };
   books.push(newBook);
   _saveBooksToStorage(books);
-  console.log('gBooks:', books);
+  return Promise.resolve();
 }
 
 function update(bookId, maxSpeed) {

@@ -1,6 +1,5 @@
 const { Link } = ReactRouterDOM;
 import { mailService } from '../services/mail-service.js';
-import { MailBoxes } from './MailBoxes.jsx';
 
 export function EmailPreview({ email, onRemoveMail }) {
   const getDate = (date) => {
@@ -14,10 +13,8 @@ export function EmailPreview({ email, onRemoveMail }) {
     <article className='email-preview-item'>
       <h1>Subject : {email.subject} </h1>
       <p>From : {email.from}</p>
-
       <p>Recevied at : {getDate(email.sentAt)}</p>
       <p>{email.body}</p>
-      <p></p>
       <Link
         to={`/email/${email.id}`}
         onClick={() => mailService.markedAsRead(email)}>
