@@ -30,10 +30,10 @@ const gEmails = [
   },
   {
     id: utilService.makeId(),
-    subject: 'INBOX',
+    subject: 'A',
     body: 'Would love to catch up sometimes',
     isRead: 'false',
-    sentAt: 1551133930594,
+    sentAt: 1951133930594,
     to: 'momo@momo.com',
     box: 'inbox',
     isMarked: false,
@@ -41,10 +41,10 @@ const gEmails = [
   },
   {
     id: utilService.makeId(),
-    subject: 'INBOX',
+    subject: 'C',
     body: 'Would love to catch up sometimes',
     isRead: 'false',
-    sentAt: 1551133930594,
+    sentAt: 1751133930594,
     to: 'momo@momo.com',
     box: 'inbox',
     isMarked: false,
@@ -52,10 +52,10 @@ const gEmails = [
   },
   {
     id: utilService.makeId(),
-    subject: 'INBOX',
+    subject: 'B',
     body: 'Would love to catch up sometimes',
     isRead: 'false',
-    sentAt: 1551133930594,
+    sentAt: 251133930594,
     to: 'momo@momo.com',
     box: 'inbox',
     isMarked: false,
@@ -139,11 +139,15 @@ function query(filterBy = null) {
   const emails = _loadEmailsFromStorage();
   if (!filterBy) return Promise.resolve(emails);
   const filteredMails = _getFilteredMails(emails, filterBy);
+
   return Promise.resolve(filteredMails);
 }
 
 function _getFilteredMails(emails, filterBy) {
-  const { isRead, box, txt } = filterBy;
+  const { isRead, box, txt, sortBy } = filterBy;
+  if (sortBy === 'alphabet')
+    emails.sort((b1, b2) => b1.subject.localeCompare(b2.subject));
+  if (sortBy === 'date') emails.sort((b1, b2) => b1.sentAt - b2.sentAt);
 
   return emails.filter((email) => {
     if (txt) return email.body.toLowerCase().includes(txt.toLowerCase());

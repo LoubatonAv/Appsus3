@@ -1,9 +1,11 @@
+import { SendMail } from '../cmps/SendMail.jsx';
 export class MailFilter extends React.Component {
   state = {
     filterBy: {
       txt: '',
       isRead: '',
       box: '',
+      sortBy: '',
     },
   };
 
@@ -25,23 +27,35 @@ export class MailFilter extends React.Component {
     } = this.state;
     return (
       <div className='filters'>
-        <div>
-          <input
-            placeholder='Search Here...'
-            type='text'
-            id='by-txt'
-            name='txt'
-            value={txt}
-            onChange={this.handleChange}
-          />
+        <div className='drop-down-filters'>
+          <section>
+            <label>Sort: </label>
+            <select name='sortBy' onChange={this.handleChange}>
+              <option value=''>No filter</option>
+              <option value='alphabet'>Alphabet</option>
+              <option value='date'>Date</option>
+            </select>
+          </section>
+          <div>
+            <label>Search: </label>
+            <input
+              placeholder='Search Here...'
+              type='text'
+              id='by-txt'
+              name='txt'
+              value={txt}
+              onChange={this.handleChange}
+            />
+          </div>
+          <section>
+            <label>Read/Unread: </label>
+            <select name='isRead' onChange={this.handleChange}>
+              <option value=''>All</option>
+              <option value='true'>Read</option>
+              <option value='false'>UnRead</option>
+            </select>
+          </section>
         </div>
-        <section className='read-filter'>
-          <select name='isRead' onChange={this.handleChange}>
-            <option value=''>All</option>
-            <option value='true'>Read</option>
-            <option value='false'>UnRead</option>
-          </select>
-        </section>
         <div className='mail-boxes'>
           <button name='box' onClick={this.handleChange} value='inbox'>
             Inbox <i className='fa fa-inbox'></i>

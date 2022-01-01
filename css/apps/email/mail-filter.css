@@ -1,12 +1,5 @@
 .mail-boxes {
-  display: flex;
-  flex-direction: column;
   margin-left: 2%;
-}
-
-.filters {
-  display: flex;
-  flex-direction: column;
 }
 
 .filters button {
