@@ -1,4 +1,4 @@
-import { NoteService } from '../services/note-service.js'
+import { NoteService } from 'note-service.js'
 import { NoteTodoInput } from '../cmps/note-todo-input.jsx'
 //  from add note we go to todos creator, in there we have a place ot show the input - a render of the note to be , than there is the input section, title and than - the todo component.
 
