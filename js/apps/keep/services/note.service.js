@@ -50,7 +50,17 @@ let notesDefault = [
         { txt: "Coding power", done: true, id: 102 }
       ]
     }
-  }
+  },
+
+  {
+    id: "n106",
+    info: {
+      type: "note-vid",
+      url: "https://www.youtube.com/embed/tgbNymZ7vqY",
+      title: "Loki"
+    },
+    isPinned: false,
+  },
 ]
 
 _createNotes();
@@ -82,7 +92,8 @@ function saveNote(info) {
       note = _createTodosNote(info)
       break;
     case 'note-vid':
-      // note = _createTxtNote(info)
+      console.log('made it to case')
+      note = _createImageNote(info)
       break;
   }
   notes = [note, ...notes]

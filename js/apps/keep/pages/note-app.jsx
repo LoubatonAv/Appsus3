@@ -26,7 +26,7 @@ export class NoteApp extends React.Component {
         
         NoteService.query(this.state.filterBy).then(notes => {
             this.setState({ notes })
-            console.log(notes)
+            // console.log(notes)
         })
     }
 
@@ -41,14 +41,6 @@ export class NoteApp extends React.Component {
         });
         this.loadNotes();
     };
-
-    onAddNote = () => {
-        
-        // call modal with buttons for each options, according to type change input (4 options) - defines tyoe, id is generated, input is going to relevant service function
-    }
-    // onEditNote = (id) => {
-    //     console.log('id:', id);
-    // }
 
     onRemoveTodo = (todoKey, noteID) => {
         NoteService.removeTodo(noteID, todoKey).then(() => {
@@ -96,30 +88,3 @@ export class NoteApp extends React.Component {
         )
     }
 }
-
-{/* <div className=" add-note">
-                    <Link className="btn primary-btn clean-link add-note" to="/note/add">Add note</Link>
-                </div> */}
-
-
-// export function NoteIndex() {
-//   return (
-//       <section className="app" >
-//         <main>
-//           <h1>indexNote</h1>
-//         </main>
-//       </section>
-//   )};
-
-
-  // onSetFilter = (filterBy) => {
-    //     this.setState({ filterBy }, this.loadNotes())
-    // }
-
-    // onRemoveNote = (noteId) => {
-    //     console.log("onRemoveNote")
-        //     bookService.removeBook(bookId).then(() => {
-        //         const newBooks = this.state.books.filter(book => book.id !== bookId)
-        //         this.setState({ books: newBooks }, this.onBack)
-        //     })
-    // }

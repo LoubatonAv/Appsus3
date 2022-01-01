@@ -1,6 +1,8 @@
 import { NoteTextInput } from './note-txt-input.jsx'
 import { NoteImageInput } from './note-img-input.jsx'
 import { NoteTodosCreator } from './note-todos-creator.jsx'
+import { NoteVideoInput } from './note-vid-input.jsx'
+
 
 export class AddNote extends React.Component {
   state = {
@@ -10,24 +12,6 @@ export class AddNote extends React.Component {
   switchInputType = (type) => {
     this.setState({ type: type })
   };
-
-
-  // handleChange = ({ target }) => {
-  //   console.log(target)
-  //   // const field = target.name;
-  //   // const value = target.value;
-  //   // this.setState((prevState) => ({
-  //   //   review: { ...prevState.review, [field]: value },
-  //   // }));
-  // };
-
-  // onSaveEmail = (ev) => {
-  //   ev.preventDefault();
-  //   console.log(ev)
-  //   // const { email } = this.state;
-  //   // noteService.saveMail(email);
-  //   // this.props.ShowMailModal();
-  // };
 
   render() {
   
@@ -47,7 +31,7 @@ export class AddNote extends React.Component {
 
         {this.state.type === 'note-img' && < NoteImageInput toggleNoteModal={this.props.toggleNoteModal} loadNotes={this.props.loadNotes}/> }
 
-        {this.state.type === 'note-vid' && <div className="note-add-trash-container">note-vid</div>}
+        {this.state.type === 'note-vid' && < NoteVideoInput toggleNoteModal={this.props.toggleNoteModal} loadNotes={this.props.loadNotes}/> }
         
         {/* input choice buttons */}
         <div className="ui-buttons container">
