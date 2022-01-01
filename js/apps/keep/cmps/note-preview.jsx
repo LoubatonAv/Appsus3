@@ -1,6 +1,6 @@
-import { NoteTodoList } from './note-todo-list.jsx'
-import { NoteUIButtons } from './note-ui-buttons.jsx'
-import { YoutubeEmbed } from './you-tube-embeded.jsx'
+import { NoteTodoList } from '../cmps/note-todo-list.jsx'
+import { NoteUIButtons } from '../cmps/note-ui-buttons.jsx'
+import { YoutubeEmbed } from '../cmps/you-tube-embeded.jsx'
 
 const { Link, Route } = ReactRouterDOM
 

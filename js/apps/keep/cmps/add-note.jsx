@@ -1,7 +1,7 @@
-import { NoteTextInput } from './note-txt-input.jsx'
-import { NoteImageInput } from './note-img-input.jsx'
-import { NoteTodosCreator } from './note-todos-creator.jsx'
-import { NoteVideoInput } from './note-vid-input.jsx'
+import { NoteTextInput } from '../cmps/note-txt-input.jsx'
+import { NoteImageInput } from '../cmps/note-img-input.jsx'
+import { NoteTodosCreator } from '../cmps/note-todos-creator.jsx'
+import { NoteVideoInput } from '../cmps/note-vid-input.jsx'
 
 
 export class AddNote extends React.Component {

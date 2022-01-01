@@ -7,12 +7,6 @@ export const NoteService = {
   removeTodo,
   ToggleTodoDone,
   saveNote: saveNote,
-  // getBookById,
-  // checkReadLength,
-  // getGoogleResults,
-  // addBook,
-  // addCar,
-  // updateCar
 };
 
 const KEY = 'noteDB';
@@ -29,15 +23,15 @@ let notesDefault = [
     },
   },
 
-  // {
-  //   id: "n102",
-  //   info: {
-  //     type: "note-img",
-  //     url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100",
-  //     title: "Bobi and Me"
-  //   },
-  //   isPinned: false,
-  // },
+  {
+    id: "n102",
+    info: {
+      type: "note-img",
+      url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100",
+      title: "Bobi and Me"
+    },
+    isPinned: false,
+  },
 
   {
     id: 'n103',
@@ -77,7 +71,7 @@ function query(filterBy = null) {
 }
 
 function saveNote(info) {
-  console.log('execute saveNote: ', info);
+  // console.log('execute saveNote: ', info);
   let notes = _loadNotesFromStorage();
   let note = null;
   switch (info.type) {
@@ -147,15 +141,13 @@ function removeNote(noteId) {
 }
 
 function removeTodo(noteId, todoId) {
-  // console.log('noteId : ', noteId);
-  // console.log('todoId:', todoId);
+
   let notes = _loadNotesFromStorage();
   let note = notes.find((note) => note.id === noteId);
-  // console.log('note:', note);
-  // console.log('note.info.todos:', note.info.todos);
+
   const noteIdx = notes.findIndex((note) => note.id === noteId);
   let newTodos = note.info.todos.filter((todo) => todo.id !== todoId);
-  // console.log('newTodos:', newTodos);
+
   note.info.todos = newTodos;
   notes[noteIdx] = note;
   _saveNotesToStorage(notes);
@@ -163,17 +155,15 @@ function removeTodo(noteId, todoId) {
 }
 
 function ToggleTodoDone(noteId, todoId) {
-  // console.log('noteId : ', noteId);
-  // console.log('todoId:', todoId);
+
   let notes = _loadNotesFromStorage();
   let note = notes.find((note) => note.id === noteId);
-  // console.log('note:', note);
-  // console.log('note.info.todos:', note.info.todos);
+
   const noteIdx = notes.findIndex((note) => note.id === noteId);
   const todoIdx = note.info.todos.findIndex((todo) => todo.id === todoId);
   let toggeldTodo = note.info.todos.find((todo) => todo.id === todoId);
   toggeldTodo.done = !toggeldTodo.done;
-  // console.log('toggeldTodo.done:', toggeldTodo.done);
+
   note.info.todos[todoIdx] = toggeldTodo;
   notes[noteIdx] = note;
   _saveNotesToStorage(notes);
@@ -195,79 +185,3 @@ function _saveNotesToStorage(notes) {
 function _loadNotesFromStorage() {
   return storageService.loadFromStorage(KEY);
 }
-
-// function checkReadLength(book) {
-//     let readingLength = '';
-//     if (book.pageCount > 500) readingLength = 'Long Reading';
-//     else if (book.pageCount < 100) readingLength = 'Light Reading';
-//     else readingLength = 'Decent Reading';
-//     return readingLength;
-// }
-
-// function getGoogleResults(search) {
-//     const url = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${search}`
-//     return axios.get(url)
-//         .then(res => res.data.items)
-// }
-
-// function addBook(book) {
-//     const compressedBook = {
-//         id: utilService.makeId(),
-//         title: book.volumeInfo.title,
-//         subtitle: book.volumeInfo.subtitle,
-//         authors: book.volumeInfo.authors || ['unknown'],
-//         description: book.volumeInfo.description || 'No description',
-//         thumbnail: (book.volumeInfo.imageLinks) ? book.volumeInfo.imageLinks.thumbnail : './assets/img/noImg.png',
-//         reviews: [],
-//         listPrice: {
-//             amount: utilService.getRandomIntInclusive(10, 400),
-//             currencyCode: 'ILS',
-//             isOnSale: (Math.random() < 0.4),
-//         },
-//         pageCount: book.volumeInfo.pageCount,
-//         categories: book.volumeInfo.categories || ['general'],
-//         language: book.volumeInfo.language,
-//         publishedDate: +book.volumeInfo.publishedDate.split('-')[0]
-//     }
-//     const books = _loadBooksFromStorage();
-//     books.push(compressedBook);
-//     _saveBooksToStorage(books);
-//     return Promise.resolve()
-// }
-
-// function _createCar(vendor, speed) {
-//     if (!speed) speed = utilService.getRandomIntInclusive(1, 200)
-//     return {
-//         id: utilService.makeId(),
-//         vendor,
-//         speed,
-//         desc: utilService.makeLorem()
-//     }
-// }
-
-// function _getFilteredCars(cars, filterBy) {
-//     let { vendor, minSpeed, maxSpeed } = filterBy
-//     minSpeed = minSpeed ? minSpeed : 0
-//     maxSpeed = maxSpeed ? maxSpeed : Infinity
-//     return cars.filter(car => {
-//         return car.vendor.includes(vendor) && car.speed >= minSpeed && car.speed <= maxSpeed
-//     })
-// }
-
-// function addCar(vendor, speed) {
-//     const cars = _loadCarsFromStorage()
-//     var car = _createCar(vendor, speed)
-//     cars = [car, ...cars]
-//     _saveCarsToStorage(cars);
-//     return Promise.resolve(car)
-// }
-
-// function updateCar(carId, newSpeed) {
-//     const cars = _loadCarsFromStorage()
-//     var car = cars.find(function (car) {
-//         return car.id === carId;
-//     })
-//     car.speed = newSpeed;
-//     _saveCarsToStorage(cars);
-//     return Promise.resolve()
-// }

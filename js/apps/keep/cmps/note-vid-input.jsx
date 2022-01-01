@@ -1,4 +1,4 @@
-import { NoteService } from '../services/Note.service.js'
+import { NoteService } from '../services/note-service.js'
 
 
 export class NoteVideoInput extends React.Component {
@@ -24,7 +24,7 @@ export class NoteVideoInput extends React.Component {
     ev.preventDefault();
 
     const { info } = this.state;
-    console.log('saving note:', info)
+    // console.log('saving note:', info)
     NoteService.saveNote(info).then(() => this.props.loadNotes());
     this.props.toggleNoteModal();
   };

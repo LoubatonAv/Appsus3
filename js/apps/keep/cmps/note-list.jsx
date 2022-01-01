@@ -1,5 +1,5 @@
-import { NotePreview } from './note-preview.jsx'
-import { Loader } from '../../../cmps/Loader.jsx'
+import { NotePreview } from '../cmps/note-preview.jsx'
+import { Loader } from '../cmps/Loader.jsx'
 // const { NavLink, Route } = ReactRouterDOM
 
 // function onAddNote() {

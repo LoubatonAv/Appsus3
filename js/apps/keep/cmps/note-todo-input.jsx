@@ -1,4 +1,4 @@
-import { NoteService } from '../services/Note.service.js'
+import { NoteService } from '../services/note-service.js'
 
 
 export class NoteTodoInput extends React.Component {

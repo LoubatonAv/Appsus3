@@ -1,4 +1,4 @@
-import { Loader } from '../../../cmps/Loader.jsx'
+import { Loader } from '../cmps/Loader.jsx'
 const { Link, Route } = ReactRouterDOM
 
 // function onRemoveTodo(todoKey) {
