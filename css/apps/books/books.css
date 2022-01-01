@@ -25,6 +25,7 @@ body {
   border: 1px solid gray;
   background-color: rgb(236, 236, 236);
   padding: 20px;
+  width: 300px;
 }
 
 .book-preview img {

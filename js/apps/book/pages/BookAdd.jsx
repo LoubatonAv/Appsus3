@@ -1,4 +1,5 @@
 import { bookService } from '../services/book.service.js';
+
 import { Loader } from '../cmps/Loader.jsx';
 import { eventBusService } from '../services/event-bus.service.js';
 
@@ -18,6 +19,7 @@ export class BookAdd extends React.Component {
   onAddBook = (id) => {
     bookService.addBook(id);
     eventBusService.emit('user-msg', { txt: 'Saved !', type: 'success' });
+    this.props.loadBooks();
   };
 
   handleChange = ({ target }) => {

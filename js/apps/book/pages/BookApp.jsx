@@ -28,7 +28,7 @@ export class BookApp extends React.Component {
     const { books } = this.state;
     return (
       <div>
-        <BookAdd />
+        <BookAdd loadBooks={this.loadBooks} />
         <BookFilter onSetFilter={this.onSetFilter} />
         <BookList books={books} />
       </div>

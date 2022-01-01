@@ -30,11 +30,14 @@ export class MailDetails extends React.Component {
 
   render() {
     const { email } = this.state;
+    console.log('email:', email);
 
     if (!email) return <Loader />;
     return (
       <section className='email-details'>
         Sent at : {this.getDate(email.sentAt)}
+        <p> To : {email.to}</p>
+        <p> From : {email.from}</p>
         <h1>{email.subject} </h1>
         <p>{email.body}</p>
         <Link to={`/email/`}>Go back</Link>
