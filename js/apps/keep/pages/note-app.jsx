@@ -1,10 +1,9 @@
 import { NoteService } from '../services/Note.service.js'
 import { NoteList } from '../cmps/note-list.jsx'
-import { NoteDetails } from './note-details.jsx'
+import { NoteDetails } from '../note-details.jsx'
 import { AddNote } from '../cmps/add-note.jsx'
-import { Loader } from '../../../cmps/Loader.jsx'
 import { eventBusService } from '../../../services/event-bus.service.js'
-
+import { Loader } from '../cmps/Loader.jsx';
 
 // const { Link } = ReactRouterDOM
 
