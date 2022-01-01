@@ -4,8 +4,6 @@ import { Loader } from '../cmps/Loader.jsx';
 import { eventBusService } from '../services/event-bus.service.js';
 import { SendMail } from '../cmps/SendMail.jsx';
 import { MailFilter } from '../cmps/MailFilter.jsx';
-import { MailBoxes } from '../cmps/MailBoxes.jsx';
-import { MailSort } from '../cmps/MailSort.jsx';
 
 export class MailApp extends React.Component {
   state = {
