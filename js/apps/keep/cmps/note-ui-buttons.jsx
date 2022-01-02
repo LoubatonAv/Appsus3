@@ -12,11 +12,11 @@ export function NoteUIButtons({ ...props }) {
   return <div className="ui-buttons container">
     <button className="btn primary-btn" onClick={() => props.onRemoveNote(props.note.id)}>
       <i className="fa fa-trash"></i></button>
-    <button className="btn primary-btn">
+    {/* <button className="btn primary-btn">
       <i className="fa fa-align-center"></i></button>
     <button className="btn primary-btn"> <i className="fa fa-paint-brush"></i></button>
     <button className="btn primary-btn"><i className="fa fa-map-pin"></i></button>
-    <button className="btn primary-btn"><i className="fa fa-share-alt"></i></button>
+    <button className="btn primary-btn"><i className="fa fa-share-alt"></i></button> */}
   </div>
 
 }

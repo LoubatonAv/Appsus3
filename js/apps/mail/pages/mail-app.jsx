@@ -69,7 +69,7 @@ export class MailApp extends React.Component {
 
     return (
       <div>
-        <h1>Unread count : {count}</h1>
+        <h1 className='compose-btn'>Unread count : {count}</h1>
         <button className='compose-btn' onClick={this.ShowMailModal}>
           Send mail
         </button>

@@ -39,11 +39,12 @@ export class AddNote extends React.Component {
           <button className="btn primary-btn" name="note-txt" onClick={() => this.switchInputType("note-txt")}>
             <i className="fa fa-align-center"></i></button>
 
-          <button className="btn primary-btn" name="note-todos" onClick={() => this.switchInputType("note-todos")}> <i className="fa fa-paint-brush"></i></button>
+          <button className="btn primary-btn" name="note-todos" onClick={() => this.switchInputType("note-todos")}> <i class="fa fa-list"></i></button>
 
-          <button className="btn primary-btn" name="note-img" onClick={() => this.switchInputType("note-img")}><i className="fa fa-map-pin"></i></button>
+          <button className="btn primary-btn" name="note-img" onClick={() => this.switchInputType("note-img")}><i class="fa fa-image"></i></button>
+          
+          <button className="btn primary-btn" name="note-img" onClick={() => this.switchInputType("note-vid")}><i class="fa fa-youtube"></i></button>
 
-          <button className="btn primary-btn"><i className="fa fa-share-alt" name="note-vid" onClick={() => this.switchInputType("note-vid")}></i></button>
         </div>
       </section>
     );

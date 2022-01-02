@@ -17,13 +17,16 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 20px;
+  justify-content: center;
+  gap: 16px;
 }
 
 .book-preview {
   border: 1px solid gray;
-  background-color: rgb(236, 236, 236);
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.32);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.425);
   padding: 20px;
   width: 300px;
 }
@@ -44,10 +47,13 @@ body {
 }
 
 .book-details {
-  padding: 50px;
+  padding: 20px;
   width: 50%;
   text-align: center;
-  background-color: white;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.32);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.425);
   margin: auto;
 }
 
@@ -107,9 +113,15 @@ textarea {
 }
 
 .user-msg.success {
-  background-color: rgb(119, 238, 179);
+  backdrop-filter: blur(20px);
+  background-color: rgba(0, 238, 255, 0.32);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.425);
 }
 
 .user-msg.danger {
-  background-color: rgb(238, 119, 119);
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 0, 0, 0.32);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.425);
 }

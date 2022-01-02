@@ -1,13 +1,28 @@
 .mail-boxes {
-  margin-left: 2%;
+  margin-right: 1rem;
 }
-
+div .filters{
+  width: 260px;
+  margin-right: 1rem;
+}
 .filters button {
-  border: none;
+  /* border: none; */
   cursor: pointer;
-  padding: 20px;
-  width: 100%;
+  padding: 20px 0px;
+  width: 260px;
   font-size: 25px;
   text-align: left;
   background-color: transparent;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.32);
+  /* border-radius: 12px; */
+  border: 1px solid rgba(255, 255, 255, 0.425);
+}
+
+.drop-down-filters{
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.32);
+  /* border-radius: 12px; */
+  border: 1px solid rgba(255, 255, 255, 0.425);
+  width: 260px;
 }

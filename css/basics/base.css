@@ -70,3 +70,16 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.about-nav{
+  display: flex;
+  margin: 1rem;
+}
+
+.about-nav-btn.btn.primary-btn{
+width: 200px;
+height: 120px;
+align: center;
+align-items: center;
+font-size: 2rem;
+}

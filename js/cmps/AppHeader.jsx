@@ -1,29 +1,30 @@
+import { _AppHeaderModal } from '../cmps/AppHeader-modal.jsx'
+
 const { NavLink, withRouter } = ReactRouterDOM;
 
 class _AppHeader extends React.Component {
+
+  state = {
+    isShowHeaderModal: false,
+  }
+
+
+  toggleHeaderModal = () => {
+    // console.log('excepturi');
+    this.setState((prevState) => ({
+      ...prevState, isShowHeaderModal: !this.state.isShowHeaderModal,
+    }));
+  };
+
   render() {
+    // console.log('sdf: ', this.state.isShowHeaderModal);
     return (
       <header className='app-header'>
         <div className='header-logo'>
           <h1 onClick={() => this.props.history.push('/')}>Appsus</h1>
         </div>
-        <nav className='main-nav'>
-          <NavLink exact to='/'>
-            <div className='nav-btn-div home'>Home</div>
-          </NavLink>
-          <NavLink to='/about'>
-            <div className='nav-btn-div'>About</div>
-          </NavLink>
-          <NavLink to='/book'>
-            <div className='nav-btn-div'>Books</div>
-          </NavLink>
-          <NavLink to='/Email'>
-            <div className='nav-btn-div'>Email</div>
-          </NavLink>
-          <NavLink to='/note'>
-            <div className='nav-btn-div'>Note</div>
-          </NavLink>
-        </nav>
+        <div className='app-header-matrix-button' onClick={this.toggleHeaderModal}><i className="fa fa-th"></i></div>
+        {this.state.isShowHeaderModal && <_AppHeaderModal toggleHeaderModal={this.toggleHeaderModal} />}
       </header>
     );
   }
